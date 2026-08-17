@@ -1,0 +1,57 @@
+name: Check whats-new.md freshness
+
+# Backstop, not a gate: this is a nudge that a sibling repo shipped something
+# since the doc was last touched, not proof that it needed an entry (most
+# releases won't). Doesn't block either sibling repo's own CI — it can't; this
+# workflow lives in a third repo with no trigger tied to their pushes, so it
+# runs on its own schedule instead.
+#
+# Checks each sibling's CHANGELOG.md header date rather than its GitHub
+# Releases: tsmap creates a real Release per tag, but wafermap does not (only
+# git tags, and as of this writing those are themselves stale relative to its
+# own CHANGELOG) — CHANGELOG.md is the one signal confirmed reliably
+# maintained in both.
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # Mondays, 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Compare sibling CHANGELOG dates against whats-new.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          latest_doc_date=$(grep -oE '^## [0-9]{4}-[0-9]{2}-[0-9]{2}' docs/whats-new.md \
+            | head -1 | awk '{print $2}')
+          echo "whats-new.md latest entry: $latest_doc_date"
+
+          stale=""
+          for repo in tsmap wafermap; do
+            changelog_date=$(gh api "repos/wafertools/$repo/contents/CHANGELOG.md" \
+              --jq '.content' | base64 -d \
+              | grep -oE '^## \[[^]]+\] — [0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1 \
+              | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+            echo "$repo CHANGELOG.md latest: $changelog_date"
+            if [[ "$changelog_date" > "$latest_doc_date" ]]; then
+              stale="$stale\n- $repo's CHANGELOG.md has an entry dated $changelog_date, newer than whats-new.md's latest ($latest_doc_date)"
+            fi
+          done
+
+          if [ -n "$stale" ]; then
+            echo -e "::warning::whats-new.md may be behind:$stale"
+            echo -e "$stale" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "whats-new.md is at least as current as both CHANGELOGs."
+          fi

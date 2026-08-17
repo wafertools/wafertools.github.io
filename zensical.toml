@@ -1,0 +1,26 @@
+[project]
+site_name   = "wafertools"
+site_url    = "https://wafertools.github.io/"
+site_author = "Paul Robins"
+repo_url    = "https://github.com/wafertools"
+
+nav = [
+  { "What's New" = "whats-new.md" },
+  { "About"      = "index.md"     },
+]
+
+[project.theme]
+favicon = "images/wafertools-icon.png"
+logo    = "images/wafertools-icon.png"
+features = [
+  "navigation.tabs",
+  "content.code.copy",
+]
+
+[project.markdown_extensions.toc]
+permalink = true
+
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums     = true
+line_spans          = "__span"
+pygments_lang_class = true
