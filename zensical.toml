@@ -7,6 +7,10 @@ repo_url    = "https://github.com/wafertools"
 nav = [
   { "What's New" = "whats-new.md" },
   { "About"      = "index.md"     },
+  # External: this site is a hub, so the two project sites are top-level tabs
+  # rather than something you have to read the About page to find.
+  { "wafermap"   = "https://wafertools.github.io/wafermap/" },
+  { "tsmap"      = "https://wafertools.github.io/tsmap/"    },
 ]
 
 [project.theme]

@@ -8,6 +8,22 @@ in a Discussion is exactly the kind of second copy that goes stale silently, sin
 can check a Discussion post against the doc the way `check-whats-new-freshness.yml` checks
 the doc against a release.
 
+## Never write a sentence that decays
+
+The teaser says what changed *in that release*. It must not contain a claim that silently
+goes stale as soon as the next release ships — no "latest entry", no "now supports X" framed
+as a running status, no version number presented as current.
+
+This has already happened: [Discussion #2](https://github.com/wafertools/.github/discussions/2)
+("Introducing What's New") carries a **Latest entry:** paragraph naming the 2026-08-16 entry.
+It was accurate the day it was posted and wrong the moment 2026-08-23 shipped, and nothing
+can catch it — `check-whats-new-freshness.yml` compares the doc against the sibling
+CHANGELOGs, and no check reads Discussions at all. That is the same "second copy goes stale
+silently" failure this page warns about, in the one post that introduced the page.
+
+A post is a dated snapshot. Write it so it stays true as a record of that date, and let
+`whats-new.md` carry the current state.
+
 ## Template
 
 ```

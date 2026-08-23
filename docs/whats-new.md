@@ -14,6 +14,30 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-08-23 — A live demo of launching tsmap from your own page; dark themes readable again
+
+If you're wiring tsmap into a data-selection tool of your own, there's now a **[live
+demo](https://wafertools.github.io/tsmap/demos/open-from-link.html)** of the launch-from-a-link
+flow: pick a sample dataset and get real, working links for both the browser build
+(`?dataUrl=`) and the desktop app (`tsmap://open?url=...`), plus the equivalent command line.
+Previously this was described in the docs but there was nothing to click.
+
+**tsmap**'s three dark themes (Dark, Nord, Solarized Dark) had borders and secondary text
+that measured as low as 1.04:1 against their own backgrounds — effectively invisible rather
+than deliberately subtle, with the empty-state "Supports STDF, ATDF…" subtitle the most
+visible casualty. Every one of those values has been re-picked per theme and checked against
+each surface it actually renders on. Light themes were unaffected. tsmap also picked up a new
+app and tab icon — a wafer glyph in place of the old placeholder.
+
+Two loading fixes: a gzipped sample file could fail to open in the **browser build** with
+"The compressed data was not valid" (the server had already decompressed it, and tsmap
+decompressed it a second time); and a sparsely-positioned wafer whose dies all landed in one
+row or column could render visibly stretched, non-square dies — cosmetic only, die counts,
+bins and yield were always correct.
+
+*See: [tsmap v0.1.28](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0128--2026-08-23),
+[wafermap v0.23.1](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0231--2026-08-18)*
+
 ## 2026-08-16 — Filter large batches before loading; wafer maps handle data with no position info
 
 **tsmap** can now scan a large batch of files — a whole directory of lots, say — for their
