@@ -14,6 +14,38 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-08-28 — Bin definitions, wafer diameter & edge-exclusion overrides, reports open in-app
+
+**tsmap** can now read and edit **bin definitions** — human-readable names for hard/soft bin
+numbers, plus which ones count as pass. STDF/ATDF already carry this in their own HBR/SBR
+records; CSV/JSON/Parquet, which have no such record at all, can now load definitions from a
+CSV via a new **Load bin definitions…** button in the column mapping step, and any format can
+save/load them afterwards from **Lot ▾ → Bin definitions…**.
+
+A new **Lot ▾ → Diameter & edge exclusion…** dialog lets you override the wafer size tsmap
+infers from the data and add an edge-exclusion band — dies within it are dropped from yield
+and shown dimmed on the map — useful when the data is too sparse for a reliable automatic
+guess. Both are also settable at launch via `--wafer-diameter`/`--edge-exclusion`. A new
+**Help → Definitions file formats…** dialog saves a filled-in example of any of tsmap's three
+definitions-file types (tests, splits, bins) without needing to load data first.
+
+**wafermap**'s summary and lot reports now open inside the app instead of a separate browser
+tab — closing a longstanding issue where the report could open successfully but sit hidden in
+an unfocused, sometimes-minimized window, looking like the button had silently done nothing.
+The new in-app view has its own Print/Save-as-PDF button, plus an "Open as full page" link for
+anyone who wants a real separate page. The built-in help guide picked up the same in-app
+Print/PDF button, a combined table of contents that no longer reads oddly across a host app's
+own guide content, and a find-in-page search box for the one case where a browser's own Ctrl+F
+can't reach it (an embedded desktop app like tsmap).
+
+CSV exports (die lists, test/bin/split tables) are now protected against formula injection — a
+cell value starting with `=`, `+`, `-`, or `@`, sourced from metadata this library didn't
+originate (an operator's free-text note, a MES field), used to be read as a live formula by
+Excel/Sheets/LibreOffice on open; it's now safely escaped.
+
+*See: [tsmap v0.1.31](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0131--2026-08-28),
+[wafermap v0.26.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0260--2026-08-28)*
+
 ## 2026-08-23 — A live demo of launching tsmap from your own page; dark themes readable again
 
 If you're wiring tsmap into a data-selection tool of your own, there's now a **[live
