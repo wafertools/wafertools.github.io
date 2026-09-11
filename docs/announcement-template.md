@@ -8,6 +8,21 @@ in a Discussion is exactly the kind of second copy that goes stale silently, sin
 can check a Discussion post against the doc the way `check-whats-new-freshness.yml` checks
 the doc against a release.
 
+## At every release
+
+1. Add the entry to `whats-new.md` (that is the write-up, and the only copy of it).
+2. Post the teaser below to Announcements.
+3. **Check the existing Discussion posts for sentences that have since decayed.** Nothing
+   automated can do this — `check-whats-new-freshness.yml` compares the *doc* against the
+   sibling changelogs and reads no Discussions at all.
+
+   Known case: [Discussion #2](https://github.com/wafertools/.github/discussions/2)
+   ("Introducing What's New") carries a **Latest entry:** paragraph naming the 2026-08-16
+   entry. **The fix is to delete that paragraph, not to keep updating it** — a running-status
+   sentence in a place nothing can check will decay again on the next release, and re-editing
+   it every time is a maintenance task that exists only because the sentence should not have
+   been written. Once it is gone, this step becomes a quick scan rather than a chore.
+
 ## Never write a sentence that decays
 
 The teaser says what changed *in that release*. It must not contain a claim that silently
