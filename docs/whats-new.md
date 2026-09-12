@@ -14,6 +14,42 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-12 — A clearer default colour scale for value and stacked maps
+
+**Value maps and stacked maps now use the Viridis colour scale by default, and they will look
+different.** The old scale ran blue → cyan → yellow → red. That is a rainbow, and rainbows have a
+specific problem for reading data: their brightness does not rise steadily. Cyan and yellow are
+both near maximum brightness while blue and red are much darker, so two genuinely different
+readings could look equally intense — and because hue changes fast around cyan and yellow, the
+map drew ring-shaped boundaries that no process step put there. Engineers told us they could not
+judge how far apart two colours were. Viridis brightens steadily from one end to the other, so
+the colour you see corresponds to the value you have, and a dense grid of dies shows small
+differences honestly.
+
+On a stacked map it also puts the emphasis the right way round. The healthy bulk of the wafer —
+where nothing failed — now sits back as dark ground, and the edge ring, scratch or cluster you
+are actually hunting for is the bright thing on it. Previously that was inverted: the good area
+glowed and the defects were dark specks.
+
+**If you preferred the old look, it is still there.** Pick **Jet** from the Colour scheme menu —
+it is the same rainbow family, now honestly labelled as one, alongside a note that rainbow scales
+trade read accuracy for familiarity.
+
+**Every scale now runs the same direction: dark for low, bright for high.** Four of them —
+Cividis, Plasma, Inferno and Greyscale — had been running inverted, which meant switching colour
+scheme silently flipped which end of your wafer looked "hot". They now match their published
+definitions, so a scale you recognise from elsewhere reads the way you expect.
+
+**New Reverse gradient option.** Some parameters have their interesting end at the bottom, and
+monochrome print has its own convention that more ink means more. One tick box in the same Colour
+scheme menu flips whichever scale you have chosen, including one your own application registered.
+tsmap remembers the setting across restarts, alongside your bin and value colour choices.
+
+**Also new: the Mako colour scale**, a blue-to-pale-green alternative with a little more
+separation at the top end than Viridis.
+
+---
+
 ## 2026-09-11 — Bin colours you can trust; STDF and ATDF together; host tsmap on your own intranet
 
 **Bin colours now follow pass and fail, and different bins no longer share a colour.** wafermap
