@@ -14,6 +14,67 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-15 — A bin keeps its colour in every lot; your pass bins count everywhere; tsmap works offline
+
+**A bin is now the same colour in every lot.** The 2026-09-11 release coloured bins by how many
+dies each held: the biggest failing bin took the first fail colour. That kept colours distinct
+within one view, but it meant a colour stood for "the largest failure here" rather than a
+particular bin. Bin 7 could be red in one lot and brown in the next, and filtering a gallery could
+recolour bins. Wafer-map tools across the industry tie colour to the bin number, so engineers can
+learn a program's colours and compare screenshots by eye. wafermap does that again. It still
+follows pass and fail: a passing bin never takes a fail colour, a failing bin 1 is never green,
+and colours from your bin definitions file still win. Hard bin 5 and soft bin 5 are different
+colours, so the two maps can't be mistaken for each other. Screenshots of bin maps will change
+colour.
+
+**Pass bins from your file now count everywhere, not just in the yield figure.** tsmap reads each
+wafer's pass bins from the file. Until now they reached only the headline yield number, and
+everything else assumed bin 1 was the only pass: findings, yield statistics, bin colours, the
+Summary panel and report, region yield, the Insights yield charts and the gallery strip. On a
+program where bins 1 and 2 both pass, bin 2 showed as a failure beside a yield that counted it as
+a pass. Every surface now uses the pass bins in your file. In a lot that mixes test programs, each
+wafer is judged by its own pass bins, and a warning names any bin that passes on one wafer but
+fails on another.
+
+**Soft-bin tables and yield are right too.** They had been judged against hard pass-bin numbers,
+so the gallery's soft-bin yield could read close to 0%. Soft bins are now judged by their own
+results.
+
+**Bin legends list passing bins first, then failing bins from most dies to fewest**, the same
+order as the Summary panel and the Insights pareto. The map legend and gallery legend used to sort
+by bin number, so one lot was listed two different ways on one screen.
+
+**Insights now works for files without die coordinates.** On a file with no X/Y positions, the
+"No die position data" panel stayed on top of Insights and hid most of the charts. The same
+happened on a file where only some dies have coordinates.
+
+**The tsmap browser app now works offline, and Chrome, Chromium and Edge can install it** as an
+app with its own window and launcher entry. It is aimed at platforms tsmap ships no installer for,
+such as RHEL. Firefox on the desktop can't install web apps, but the offline caching still works
+there. The whole app is cached on first visit, including the file parser, so an offline tsmap can
+still open files. The user guide's text works offline; its screenshots load the first time you
+view them online. Updates are never applied behind your back: tsmap asks first, because reloading
+discards anything you have loaded. None of this changes the desktop app.
+
+**Wafer configuration details are in plain language.** The info row used to show raw STDF codes
+such as "Wf Flat: D · Pos X: R". It now reads "Wafer Flat: Bottom · X Increases: Right", with
+units on every size.
+
+**Opening a single-wafer file no longer stops to ask for a wafer label** when the file's lot ID
+already identifies the wafer.
+
+**For developers building on wafermap: 78 exports are deprecated and will be removed in 0.31.0.**
+They are the low-level drawing pipeline (`buildView`, `toCanvas` and related functions), the
+chart-data builders the Insights tab now draws for you, and helpers that were exported by
+accident. Each still works in 0.30.0 and logs one console notice the first time you call it, saying
+what to use instead. If you depend on one with no replacement,
+[open an issue](https://github.com/wafertools/wafermap/issues) before 0.31.0. The `passBins`
+options on the analysis and render functions are removed: give pass bins to `buildWaferMap` and
+everything downstream uses them. The
+[changelog](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md) lists every name.
+
+---
+
 ## 2026-09-12 — A clearer default colour scale for value and stacked maps
 
 **Value maps and stacked maps now use the Viridis colour scale by default, and they will look
