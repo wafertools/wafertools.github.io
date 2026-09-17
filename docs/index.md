@@ -31,7 +31,7 @@ dependencies, no server.
 
 Reach for it when you need wafer maps *inside* your own application, a data source tsmap
 doesn't read, or behaviour it doesn't offer — and note you can start with tsmap and
-integrate later. Two calls render a working map; tsmap itself uses fourteen of the library's
+integrate later. Two calls render a working map; tsmap itself uses fifteen of the library's
 hundred-odd exports.
 
 [Docs](https://wafertools.github.io/wafermap/) ·
