@@ -14,6 +14,64 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-17 — A security fix, exports named for their data, choosing a test on a phone
+
+**A security fix: please update.** This release fixes a security issue in how names from a data
+file are displayed. It affects earlier versions of both tsmap and wafermap, so update, particularly
+if you open files from sources you don't control.
+
+**Saved images and CSVs are named for the data they came from**, for example
+`LOT123_W05_hard-bin.png` or `LOT123_25-wafers_yield-by-wafer.png`. Exports used to have fixed
+names such as `dies.csv`, so the same export from two wafers saved as `dies.csv` and
+`dies (1).csv`, with nothing to say which wafer each held. Anything the data doesn't have is left
+out rather than guessed: a wafer with no ID gets no wafer part in the name.
+
+**You can choose a test from the plot-mode menu on a phone or tablet.** With more than six tests,
+"Test Value ▶" opens a list, and that list only opened when a mouse hovered over it. A tap opened
+it and closed it again straight away. It now opens with a tap, and with Enter or Space from the
+keyboard, where the arrow keys move through the tests.
+
+**Ring, quadrant and reticle lines are clear on high-resolution screens.** Map lines and markers
+were drawn at a fixed number of screen pixels, so on the high-DPI displays most laptops now have
+they came out at half their intended width or less and were hard to see. They now look the same at
+every display scale. Nothing changes on a standard display.
+
+**A detached gallery card no longer shows two sets of window buttons.** In the tsmap desktop app a
+detached card opens in a window drawn inside the app. Maximized, its header sat just under the
+app's title bar, and its minimize button looked like the real one but only shrank the card. That
+button is now **Collapse**, with a different icon, and it is hidden while the window is maximized.
+
+**Smaller fixes:**
+
+- **tsmap's Filter files dialog** no longer shows a "selected" count in its title that never
+  changed. The count above the table is the live one.
+- **A gallery with a fixed number of columns** uses the full width instead of leaving most of each
+  row empty.
+- **Changing the bin colours in an expanded gallery card** recolours that card.
+- **A card put back into the gallery** matches the other cards again instead of keeping the view it
+  had while expanded.
+- **Outlined buttons in the Summary panel** have a visible border in dark themes.
+- **A lot report** analyses its wafers when no summary was prepared beforehand, instead of
+  reporting empty wafers.
+
+**For developers building on wafermap:**
+
+- **Five of the exports deprecated in 0.30.0 are staying** after review, because each is the only
+  supported way to do something an app needs: `visibleFindings`, `openReportModal`,
+  `metadataDisplayValue`, `getReticleCell` and `renderFindingsReportHtml`. They no longer log a
+  notice.
+- **The rest now have replacements.** Analysis results include process capability (Cp, Cpk, Pp,
+  Ppk), pass rates by the tester's recorded verdict, ring and quadrant yield and the spatial
+  pattern. There are also new report functions that take built maps, `getBinColors()` on both
+  controllers, and `buildWaferMap({ layout: true })` for a die layout with no test data. Every
+  remaining deprecation notice names what to use instead.
+- **`downloadFilename` becomes a file-name prefix in 0.31.0.** Until then it still names the map
+  and gallery PNG, and logs a notice once.
+- **Text bins and test values raise a warning.** A CSV parser gives every field as text, and a bin
+  of `"1"` is not pass bin `1`: yield read 0% with nothing to say why.
+
+---
+
 ## 2026-09-15 — A bin keeps its colour in every lot; your pass bins count everywhere; tsmap works offline
 
 **A bin is now the same colour in every lot.** The 2026-09-11 release coloured bins by how many
