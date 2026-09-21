@@ -14,6 +14,54 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-21 — Big lots load far faster, and tsmap warns before a crash
+
+**Loading a large gallery is now up to 20× faster, with no single pause long enough to make the
+page look frozen.** A gallery's shared legend and Summary panel used to rebuild from scratch
+after every wafer arrived, so a progressive load got slower the more wafers it had — 182 seconds
+for 50 wafers of 8,000 dies each. The same lot now loads its cards in about 8 seconds, with no
+single pause longer than half a second. A lot's Summary panel, which used to lock up the browser
+for over 15 seconds on the
+largest lots, now fills in piece by piece instead of freezing.
+
+**tsmap warns you before a web-browser load that would crash the tab**, instead of just
+crashing. Above roughly 200,000 dies the browser build can run out of memory outright; it now
+checks for that specific risk — separately from its existing "this may be slow" warning, which
+didn't cover it — and tells you before you commit to the load. The desktop app was never
+affected.
+
+**tsmap's loading screen is now one clear, consistent indicator** for every stage of opening a
+file — scanning, parsing, analysing, rendering — instead of a small spinner that vanished on
+narrower windows and didn't always agree with the rest of the screen about whether something was
+still happening. A new "Log phase timings" option in the Help menu can record exactly how long
+each stage took, useful if you need to report a slow load.
+
+**A very large wafer or lot could fail outright with an obscure "Maximum call stack size
+exceeded" error.** Anything at or above roughly 100,000 dies could hit this in several places —
+now fixed everywhere it could occur.
+
+**Correlation charts on very large lots no longer hang.** Above 25,000 dies, the correlation
+panel now computes from an evenly-spread sample of the lot rather than all of it, and says so
+plainly when it has. The numbers you see are unaffected either way — the sample is large enough
+that the values wouldn't change.
+
+**Smaller fixes:**
+
+- A single bad test value no longer turns that whole test's statistics into "NaN" in the Summary
+  and Insights panels — it's now correctly left out instead.
+- Switching between Insights tabs and back no longer re-runs the whole analysis a second time.
+
+**For developers building on wafermap:**
+
+- **`renderWaferGallery` can now report its own loading progress.** `onItemResolved(resolved,
+  total)` fires as each card is built, and `onItemsResolved()` fires once the whole gallery —
+  including its shared legend, colours and Summary panel — has actually settled. tsmap's new
+  loading indicator (above) is built on this.
+- **A sampled correlation matrix says so in its data**, via `CorrelationMatrix.sample`, not just
+  in the panel — for hosts reading matrices directly.
+
+---
+
 ## 2026-09-17 — A security fix, exports named for their data, choosing a test on a phone
 
 **A security fix: please update.** This release fixes a security issue in how names from a data
