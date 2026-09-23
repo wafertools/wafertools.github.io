@@ -14,6 +14,51 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-23 — Tests computed from other tests, response curves, and charts of just the dies you pick
+
+**You can now define a test as a formula of other tests, and it works everywhere a measured test
+does.** A switching window (`t[1202] - t[1212]`), a leakage shift, a ratio, a log of a current,
+"did every step of this sweep pass" — each becomes a test you can plot on the map, give spec
+limits, and see in every chart, table and report. Anything computed this way is marked **†**
+wherever it appears, so it is never mistaken for something the tester measured, and a die missing
+one of the inputs shows as no data rather than a misleading zero. In tsmap, add an `expression`
+column to your test definitions file.
+
+**Sweeps: read a run of tests as a curve.** Many test programs measure one thing at a series of
+conditions — voltages, temperatures, bake times, cycle counts, resistance thresholds — and record
+each step as its own test. Declare them as a sweep and Insights draws them as a response curve
+(the median with a p10–p90 band), and measures a pair of curves against each other: **where they
+cross**, and **how far apart they are** at the levels you choose. The swept value can be given
+directly or read straight from the test names (`LRS_STATS_12K` is 12 kΩ), steps that grow by
+multiples can go on a log axis, and the axis can carry a unit. In tsmap, load a sweeps file from
+**Setup ▾ → Sweeps…**, or pass `--sweeps` on the command line.
+
+**Right-click to chart just the dies you care about.** Select a cluster or a scratch on a map and
+right-click — or right-click a wafer in a gallery, or one wafer's bar in a chart — for a
+histogram, process capability or any sweep drawn from only that population. The chart says
+exactly how many dies it used and from which wafer, so it cannot be mistaken for the whole lot.
+The same menu is on the map's new **Chart** button, and on the Menu key.
+
+**An expanded chart now uses its window.** Charts opened in their own window used to stay the
+size they were in the grid; each now grows in the way that suits it — plots fill the window, lists
+of wafers or bins show every row, and circles and matrices grow to fit.
+
+**tsmap's file dialogs now remember where you were.** Opening data, saving images, exporting,
+loading definitions and saving filters each reopen in the folder you last used for that task —
+on Linux too, where they used to start at your home folder every time.
+
+**For developers building on wafermap:**
+
+- **`derivedTests`** on `buildWaferMap` — a `TestDef` plus an `expression`. Parsed to a typed
+  tree and walked, with no `eval` and no expression engine, so a set is safe to share as JSON.
+- **`insights.sweeps`** — sweep definitions with test ranges (`'1200..1230'`), `xValues` or
+  `xFromName` (a `{x}` placeholder pattern, deliberately not a regex), `xUnit` and
+  `xScale: 'log'`.
+- **Drilldown needs no wiring** and has no option: a map takes over right-click only when there
+  is something to chart, so a host's own context menu still works on bins-only maps.
+
+---
+
 ## 2026-09-21 — Big lots load far faster, and tsmap warns before a crash
 
 **Loading a large gallery is now up to 20× faster, with no single pause long enough to make the
