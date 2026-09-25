@@ -14,6 +14,60 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-25 — Spec limits on the charts, files in different units combine, and a slimmer API
+
+**For developers building on wafermap — 0.31.0 is a breaking release:**
+
+- **The exports deprecated in 0.30 are removed** — the low-level drawing pipeline, the chart-data
+  and region builders, and a set of internal helpers — along with `buildWaferMap`'s unused second
+  argument and the `showPartialDies`/`includePartial` options. Each has a replacement, listed on
+  the new [Upgrading](https://wafertools.github.io/wafermap/upgrading/) page; most integrations
+  use none of them.
+- **Values outside the STDF V4 ranges are now treated as missing** by `buildWaferMap`, as 0.30.4
+  announced, with the `input-values-outside-stdf` warning saying what was left out;
+  `waferConfig.orientation` accepts 0, 90, 180 or 270.
+- **`downloadFilename` is a prefix for every saved file**, CSVs and charts included, rather than
+  the name of the map's PNG alone.
+- **Each release now has a
+  [GitHub Release](https://github.com/wafertools/wafermap/releases)** with its changelog notes.
+- The data layer is about 49 KB gzipped, down from about 61 KB.
+
+**If you have hand-written definitions files: `lsl`/`usl` columns are now read as spec limits.**
+They used to be read as test limits. The log says so whenever a file uses them. To keep a file's
+values as the limits dies are judged by, rename those columns to `lo_limit`/`hi_limit`. Files
+saved by tsmap are unaffected.
+
+**Spec limits sit beside test limits on the charts.** The Insights box plot, histogram,
+wafer-to-wafer trend and scatter now draw a test's spec limits (LSL/USL) as well as its test
+limits (Lo limit / Hi limit), each labelled and dashed differently so the two are never confused.
+When a test has both, a **Limits** choice switches all four charts together between both (the
+default), either kind, or none. Gridlines are lighter so the limits stand out, and the scatter
+marks a limit that falls outside its plotted range at the edge, as the other charts already did.
+The wafer map itself still judges pass/fail by the test limits.
+
+**Spec limits can come from your own files.** A test-definitions file sets spec limits with
+`lsl`/`usl` (or `lo_spec`/`hi_spec`) columns, beside test limits in `lo_limit`/`hi_limit`, and a
+long-format CSV, JSON or Parquet file can map columns to either kind. Process capability is
+measured against them, and **Save definitions** writes both. Every column name now means exactly
+one kind of limit, and a name that doesn't say which (`min`, `max`, `lower`, `upper`) is ignored
+with a warning rather than guessed.
+
+**A test recorded in mV by one file and V by another now stays in the lot.** tsmap used to
+treat the two as different measurements and leave the test out of every view that compares
+wafers. It now converts the later file's values and limits to the unit the first file uses, and
+says so in the log. Only a difference of SI prefix on the same unit is converted; anything else
+is still kept apart. A test-definitions file whose limits are written in another prefix is
+converted the same way.
+
+**Every format now reads values to the STDF ranges.** CSV, JSON and Parquet join STDF and ATDF:
+a bin, position or site number the STDF format cannot hold, or a reading that is not a finite
+number, is treated as missing and reported, rather than plotted as if it were ordinary data.
+
+**New warnings are visible without opening the log.** tsmap's **Log** button shows how many
+warnings and errors have arrived since you last looked, such as "▲ 3 new warnings".
+
+---
+
 ## 2026-09-25 — Spec limits, correct retest matching, and test data read to the STDF spec
 
 **Spec limits and test limits are now shown and used separately.** A test can carry both the
