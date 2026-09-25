@@ -14,6 +14,51 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-25 — Spec limits, correct retest matching, and test data read to the STDF spec
+
+**Spec limits and test limits are now shown and used separately.** A test can carry both the
+limits it was judged against on the tester (Lo limit / Hi limit) and the process's own
+specification limits (LSL/USL) — the two are frequently different, and conflating them has
+always been a source of confusion. Process capability (Cpk and friends) now measures against a
+test's spec limits when it has them, and against its test limits otherwise, and says which one it
+used. Every chart, table and report labels the two apart.
+
+**A result exactly on a limit is judged the way the file says, not assumed.** STDF and ATDF each
+record whether a value equal to a test's limit counts as a pass or a fail; that rule is now read
+and applied everywhere a die's pass/fail status is shown — the map, the yield figures, the
+Summary panel, every chart.
+
+**Retests are matched correctly even when a file gives no die position.** Some testers record
+retests by part ID rather than by X/Y, and previously such a lot had no reliable way to say which
+record superseded which. Retests are now matched by part ID within a wafer when the file has no
+position for them, so retest handling (first/best/worst/last) resolves correctly instead of
+treating every attempt as a separate die.
+
+**Test data is read exactly to the STDF/ATDF specification.** Bins, coordinates, test results and
+part IDs are all read to the value ranges and validity rules the formats define — including which
+recorded results the tester itself marked as usable — so what you see matches the tester's own
+judgement of the data. A value outside what the spec allows is reported rather than plotted as if
+it were ordinary.
+
+**Derived tests and sweeps can be cleared, and tsmap warns when they won't fit.** The test
+selector has a **Remove derived tests** action, and **Setup ▾ → Sweeps…** has **Clear** — both
+previously had to be redefined from scratch to remove. After loading a file, tsmap now also warns
+when none of your derived tests could be computed, or when a sweep names none of the lot's tests,
+with a button to remove just the sweeps that don't apply.
+
+**For developers building on wafermap:**
+
+- **`TestDef.specLow`/`specHigh`** — spec limits, read separately from `limitLow`/`limitHigh`.
+  `TestCapability.limitBasis` says which pair a given test's capability was measured against.
+- **`TestDef.limitLowInclusive`/`limitHighInclusive`** — whether a value equal to a limit passes,
+  read from the file and honoured by every pass/fail surface.
+- **`DieResult.supersedes`** — set when the tester marked a record as replacing an earlier one; it
+  always wins, whatever `retestPolicy` says.
+- **`DieResult.partId`/`Die.partId`** now accept text as well as numbers, as STDF and ATDF define
+  them.
+
+---
+
 ## 2026-09-23 — Tests computed from other tests, response curves, and charts of just the dies you pick
 
 **You can now define a test as a formula of other tests, and it works everywhere a measured test
