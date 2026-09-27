@@ -14,6 +14,67 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-09-27 — Selections you can see, several bins at once, and lot findings that count every wafer
+
+**Selected dies stand out, whatever the colours.** Selecting dies — a click, a dragged box, or a
+finding clicked in the Summary panel — now fades the rest of the wafer and outlines the
+selection, so the selected dies are the only ones in full colour. A finding's pattern stays
+readable inside its outline, and a ring-shaped region is unmistakably the ring, not the centre.
+Clicking the only selected die again clears the selection.
+
+**Maps open ready to select.** Dragging on a map now draws a selection box straight away; hold
+Space and drag, or choose Pan in the toolbar, to pan instead.
+
+**Show several bins at once.** Ctrl/Cmd+click in the legend adds or removes bins (or metadata
+values), so related fails can be viewed together; a plain click still shows just one. Clicking a
+finding about a bin filters the legend to that bin, so the legend always names what the finding
+describes.
+
+**Lot findings count every wafer that shows a pattern.** A regional pattern — a bin, the yield,
+a limit failure or a test value that differs at the edge, in a quadrant, a sector and so on — is
+now tested on all the wafers' data together, and reported as, for example, "higher on 8/8
+wafers, all wafers' data combined". Patterns confined to
+one region (a bin found only at the edge), yield losses of a few points, and edge rings made of
+scattered fails are now reported too, and edge-ring and edge-local wafers count as one edge
+pattern.
+
+**For developers building on wafermap:** `highlightBin` and `highlightMetadataValue` accept a
+list as well as a single value, and a lot finding about a region carries each counted wafer's
+dies in `highlight.dieKeysByWafer`.
+
+---
+
+## 2026-09-26 — Large lots load far faster and use far less memory
+
+**The browser build opens lots of about 60 million test values** (dies × selected tests) — for
+example 1.2 million dies at 50 tests each — where it previously stopped at around 200,000 dies
+regardless of test count. A file past that limit now fails with a message saying so and what to
+do, instead of a parser error or a crashed tab. Selecting fewer tests in the test selector raises
+how many dies fit, since a filtered parse only holds the tests kept.
+
+**Every load and analysis is faster, and every lot takes much less memory.** A lot now moves from
+the parser to the map as columns — one array per test rather than one object per die — with no
+copying in between. On a 341 MB, 266,325-die, 51-test file: the desktop app goes from starting a
+parse to a finished gallery in about 15 seconds, where it took 36; the app's memory use with the
+gallery open falls from about 4.1 GB to about 1.2 GB. In the browser, the same file parses in
+about 6 seconds and holds about 330 MB, where it used to crash the tab outright. Regional
+test-value analysis (the **Analyse** findings) is two to three times faster, and now runs
+automatically on lots estimated to take under a second, with an **Analyse** button and a time
+estimate offered above that.
+
+**For developers building on wafermap:** test values and verdicts are now read from per-test
+columns rather than held as an object on every die — `die.testValues`/`die.testPass` still work,
+but each read now builds a fresh snapshot rather than returning a live object, so assigning to
+either throws. `results` can also be passed as columns directly (`DieColumns`) by a host that
+already holds its data that way.
+
+**For developers building on `@wafertools/testdata-parser`:** every parse function now returns a
+compact columnar buffer instead of one JavaScript object per die, with a small decoder
+(`decodeParsed`/`decodeColumns`, shipped in the package) to read it back. This is the whole basis
+of the memory and speed improvements above; see the package's own docs for the exact shape.
+
+---
+
 ## 2026-09-25 — Spec limits on the charts, files in different units combine, and a slimmer API
 
 **For developers building on wafermap — 0.31.0 is a breaking release:**
