@@ -14,6 +14,56 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-10-02 — Multi-project wafers fill the map, a Summary and reports that lead with what matters, and lot drift
+
+**Compact layout for multi-project wafers.** On a multi-project wafer each reticle holds only a few of one
+product's dies, so the map is mostly empty and every die is tiny. When the occupied columns and rows repeat at a
+regular pitch, the Overlays menu offers **Compact layout**: the empty rows and columns disappear and each group of dies
+is outlined, so your product fills the map. Nothing is left out. The legend, yield and findings are the same as on the
+wafer view, and hover text and axis labels still give the original die coordinates. In a gallery every card shares one
+layout, so wafers compare cell for cell, and the cards are only as tall as their maps need. Random missing dies do not
+repeat, so a wafer that merely has holes is not offered it.
+
+**Layout diagnostics, for when a layout is not recognised.** A **Layout diagnostics** row in the same menu shows what the
+detector saw as counts and scores only — no die positions, bins, test values or wafer names — with **Copy** and **Save as
+file**, so someone can report why a layout was or was not recognised without sharing their data.
+
+**Axis labels on request, and the XY indicator when you turn the wafer.** The die coordinates along the edges appear when you
+zoom; an **Axis labels** row in the Overlays menu shows them all the time, and on a compact layout they mark each group
+of dies. The first rotate or flip switches the **XY indicator** on, so you can see which way X and Y
+now run; it stays on until you switch it off.
+
+**A wafer opened in its own window keeps its size when you open the Summary panel.** The window widens by the panel's
+width instead of squeezing the map.
+
+**The Summary panel opens with "What stands out".** A headline, then up to three items ranked by the dies each one costs
+— a region whose pass rate fell, a fail bin that rose, a wafer well below the lot, a test outside its limits — with the
+fail bins behind a region's shortfall named. Click a name to see it on the map. The HTML reports open with the same
+section and have a new layout: severity is three dots and a word, so it reads in a black-and-white print, bars sit behind
+yields and bins, and a table row is tinted only when it is one or more points below its reference. A click on a finding in
+a report opened from the panel shows it on the map. The panel and the reports now count bins, order findings and read
+yields the same way, and the weakest severity is called "Minor".
+
+**Lot findings come from the lot.** A spatial pattern that recurs on the same dies across wafers is found by stacking the
+lot's wafers and reported once, on every wafer it shows on. Adjacent regions that carry one signal are one finding
+("Sectors E–N", "Rings 1–2"). Outlier wafers follow one rule, shared by the findings and the Wafer Yield list. For lots of
+five or more wafers, a yield or a test mean that **drifts** across the wafers is listed as a **Watch** line.
+
+**In tsmap, the column mapping dialog opens ready to confirm.** Columns that are recalculated on load (`Ring`, `Quadrant`,
+`Edge excluded`, a derived test's column) start as "— ignore —", numeric run conditions such as test temperature,
+operator, program, recipe and slot come in as Display info rather than tests, when two columns look like the same role the
+stronger match keeps it, the dialog says when a saved mapping is in use, and more X/Y names are recognised (`chip_x`,
+`position_x`, `X Coordinate`, `Y Row` and their equivalents).
+
+**For developers building on wafermap:** `viewOptions: { compact: true }` applies the compact layout whether or not it
+would be offered, and `viewOptions: { showAxes }` is the axis labels choice. `sectorCount` is 4, 8 or 16 (the compass
+names cover 16 bearings; other values are corrected to the default with an `'analysis-option-corrected'` warning). Drift
+findings have ids `drift:yield` and `drift:test:<number>`. The report builders load when a report is opened, which
+takes about 10 KB gzipped out of what rendering a map downloads. A new **Multi-project wafers** example shows the compact
+layout.
+
+---
+
 ## 2026-09-27 — Selections you can see, several bins at once, and lot findings that count every wafer
 
 **Selected dies stand out, whatever the colours.** Selecting dies — a click, a dragged box, or a
