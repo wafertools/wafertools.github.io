@@ -14,6 +14,39 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-10-04 — Insights shows the lot as tables, and a gallery can select the same dies on every wafer
+
+**A Data tab in Insights.** The last Insights tab shows the wafers in scope as tables, one at a time: **Statistics** (the
+test-values and functional-tests tables), **Dies** (one row per die with a column per test, sortable, and smooth to scroll
+at hundreds of thousands of dies) and **Wafers** (one row per wafer: metadata, die counts, yield and test means). Each has
+**Export CSV**, which writes the table as shown, and **Copy**. Click a die's row to see that die ringed on its map. A very
+large export is written to disk in pieces, so the page stays responsive. Exported numbers carry full precision rather than
+the screen's four figures.
+
+**Right-click always offers the tables.** Right-clicking a map selection, a wafer or a chart mark opens a menu that now
+includes **Dies** and **Test statistics**, the Data tab's tables over just those dies, and it appears even on a map with
+nothing to chart. The Summary panel's "View die list" is now **Data tables** and opens the same tables over the wafer or
+lot, with Insights on or off.
+
+**Compare the same place across a lot.** In a gallery, **Select on every wafer** applies a box or click made on any card at
+the same die positions on every card, so an edge ring, a scratch zone or a reticle corner is read lot-wide, and the
+right-click menu then charts and tabulates those dies across all the wafers. Ctrl/Cmd+click a card's header to pick whole
+wafers. In the Insights scatter, hover a point to name its wafer and die, click it to open that wafer, or drag a rectangle to
+select dies across wafers.
+
+**Insights is on by default,** with a **Maps | Insights** switch that stays in the same place in both views, and a slim
+**Summary** tab on the edge of the map to open the Summary panel when it is closed. The metadata strip fits as many of a
+field's values as the width allows.
+
+**In tsmap, the desktop window reopens where you left it,** and a small lot imports every test without stopping at the test
+selector (**Setup ▾ → Tests…** filters afterwards).
+
+**For developers building on wafermap:** `insights.enabled` defaults to `true` (pass `{ enabled: false }` to opt out),
+`onSaveText` can receive a `Blob` for a very large table, and a map's right-click menu is always the drilldown menu. The
+steps are in [Upgrading](https://wafertools.github.io/wafermap/upgrading/).
+
+---
+
 ## 2026-10-02 — Multi-project wafers fill the map, a Summary and reports that lead with what matters, and lot drift
 
 **Compact layout for multi-project wafers.** On a multi-project wafer each reticle holds only a few of one
