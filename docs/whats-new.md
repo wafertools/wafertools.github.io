@@ -14,7 +14,18 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
-## 2026-10-04 — Insights shows the lot as tables, and a gallery can select the same dies on every wafer
+## 2026-10-04 — Build and keep your own plots, Insights shows the lot as tables, and a gallery can select the same dies on every wafer
+
+**Build your own plots, and keep them.** The new **Plot** tab in Insights is a chart builder. **+ New plot** opens a plot
+beside a large copy of its chart: choose scatter, histogram, box, bar or line, the field for X, Y and colour (any test, a die's position,
+a wafer's yield, or a lot field such as split, slot or temperature), and the titles, limits, log scale and direction of
+each axis. Yield by temperature or by split is a bar of pooled yield, a test per wafer is a box, a scatter can be coloured
+on a gradient by a third value, and one mark per wafer combines the dies' values by mean, median or another measure. Every change is drawn at once, titles write themselves until you type your own, and each plot states how many
+wafers and dies it shows and how many it left out for a missing value. A plot is a recipe with no lot in it, so it is kept
+for the next lot, offered in the right-click menu over any selection of dies, and can be exported and imported as a file
+to share. **Add examples** draws one plot of each type from the lot to start from, and a title you typed is checked against its plot, so one that still names a test you have since swapped out is flagged. In tsmap your plots are remembered between sessions. A plot that needs a test the open lot lacks is kept,
+dimmed, with the reason, and it checks a test's name as well as its number, so a plot saved against another test program
+is never drawn against the wrong measurement.
 
 **A Data tab in Insights.** The last Insights tab shows the wafers in scope as tables, one at a time: **Statistics** (the
 test-values and functional-tests tables), **Dies** (one row per die with a column per test, sortable, and smooth to scroll
@@ -41,7 +52,7 @@ field's values as the width allows.
 **In tsmap, the desktop window reopens where you left it,** and a small lot imports every test without stopping at the test
 selector (**Setup ▾ → Tests…** filters afterwards).
 
-**For developers building on wafermap:** `insights.enabled` defaults to `true` (pass `{ enabled: false }` to opt out),
+**For developers building on wafermap:** `insights.plots` and `onPlotsChange` keep the Plot tab's list (with `readPlotsFile` and `writePlotsFile` for the file, and `onPickPlotsFile` for a native import dialog), `insights.enabled` defaults to `true` (pass `{ enabled: false }` to opt out),
 `onSaveText` can receive a `Blob` for a very large table, and a map's right-click menu is always the drilldown menu. The
 steps are in [Upgrading](https://wafertools.github.io/wafermap/upgrading/).
 
