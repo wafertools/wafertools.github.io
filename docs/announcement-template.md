@@ -16,12 +16,9 @@ the doc against a release.
    automated can do this — `check-whats-new-freshness.yml` compares the *doc* against the
    sibling changelogs and reads no Discussions at all.
 
-   Known case: [Discussion #2](https://github.com/wafertools/.github/discussions/2)
-   ("Introducing What's New") carries a **Latest entry:** paragraph naming the 2026-08-16
-   entry. **The fix is to delete that paragraph, not to keep updating it** — a running-status
-   sentence in a place nothing can check will decay again on the next release, and re-editing
-   it every time is a maintenance task that exists only because the sentence should not have
-   been written. Once it is gone, this step becomes a quick scan rather than a chore.
+   This is a quick scan for any sentence that names a "latest" or "current" release or version.
+   [Discussion #2](https://github.com/wafertools/.github/discussions/2) once carried one (see below), and
+   the fix was to delete it, not to keep updating it.
 
 ## Never write a sentence that decays
 
@@ -29,12 +26,14 @@ The teaser says what changed *in that release*. It must not contain a claim that
 goes stale as soon as the next release ships — no "latest entry", no "now supports X" framed
 as a running status, no version number presented as current.
 
-This has already happened: [Discussion #2](https://github.com/wafertools/.github/discussions/2)
-("Introducing What's New") carries a **Latest entry:** paragraph naming the 2026-08-16 entry.
-It was accurate the day it was posted and wrong the moment 2026-08-23 shipped, and nothing
-can catch it — `check-whats-new-freshness.yml` compares the doc against the sibling
-CHANGELOGs, and no check reads Discussions at all. That is the same "second copy goes stale
-silently" failure this page warns about, in the one post that introduced the page.
+This happened once: [Discussion #2](https://github.com/wafertools/.github/discussions/2)
+("Introducing What's New") carried a **Latest entry:** paragraph naming the 2026-08-16 entry. It was
+accurate the day it was posted and wrong the moment 2026-08-23 shipped, and nothing could catch it:
+`check-whats-new-freshness.yml` compares the doc against the sibling CHANGELOGs, and no check reads
+Discussions at all. That is the same "second copy goes stale silently" failure this page warns about,
+in the one post that introduced the page. The paragraph has been deleted, which is the fix: a
+running-status sentence in a place nothing can check decays again on the next release, and re-editing
+it every time would be a chore that exists only because the sentence should not have been written.
 
 A post is a dated snapshot. Write it so it stays true as a record of that date, and let
 `whats-new.md` carry the current state.
