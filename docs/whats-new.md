@@ -35,10 +35,35 @@ at hundreds of thousands of dies) and **Wafers** (one row per wafer: metadata, d
 large export is written to disk in pieces, so the page stays responsive. Exported numbers carry full precision rather than
 the screen's four figures. ([Data tables guide](https://wafertools.github.io/wafermap/user-guide/#data-tables), [screenshot](https://wafertools.github.io/wafermap/images/guide-insights-data.png), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#tables-and-exports))
 
-**Right-click always offers the tables.** Right-clicking a map selection, a wafer or a chart mark opens a menu that now
-includes **Dies** and **Test statistics**, the Data tab's tables over just those dies, and it appears even on a map with
-nothing to chart. The Summary panel's "View die list" is now **Data tables** and opens the same tables over the wafer or
-lot, with Insights on or off. ([Charting dies and wafers](https://wafertools.github.io/wafermap/user-guide/#44-charting-dies-and-wafers), [screenshot](https://wafertools.github.io/wafermap/images/guide-plot-drilldown.png))
+**A sweep remembers what each test was called.** A sweep opened on a lot from another test program that reuses the same numbers is
+not drawn as if it were the original: the card names the mismatch, leaves the test undrawn and does not measure the crossing or
+widths from it. ([Sweep cards](https://wafertools.github.io/wafermap/user-guide/#sweep-cards))
+
+**A plotted test's limits are drawn, and yield can be split by ring, quadrant, bin or die position.** A plot of a test that has limits
+carries them as dashed lines, short for test limits and long for spec limits, each labelled with its value, and a plot's editor dims
+a choice that would leave a plot that cannot be drawn, with the reason. ([Plots](https://wafertools.github.io/wafermap/user-guide/#plots))
+
+**A chart saved as an image says what it is, and a printed chart says the same.** Its title, the settings of its controls, its
+population and count, and its colour key travel with it, and the controls that only act on the screen are left off the printed page.
+([Exporting a chart](https://wafertools.github.io/wafermap/user-guide/#exporting-a-chart))
+
+**Right-click, or click a mark, to chart and tabulate exactly those dies.** The drilldown menu opens on a selection, a wafer, a
+gallery card or a chart mark, even on a map with nothing to chart, and offers the charts the dies support, your saved plots, **New
+plot…** and **New sweep…** drawn over just those dies, and tables: **Dies**, **Test statistics** and, for dies on several wafers,
+**Wafers**, the Data tab's tables over those dies with Export CSV and Copy. A saved file is named for the selection and carries a
+Wafer column. The Summary panel's "View die list" is now **Data tables** and opens the same tables over the wafer or lot, with
+Insights on or off. ([Charting dies and wafers](https://wafertools.github.io/wafermap/user-guide/#44-charting-dies-and-wafers), [screenshot](https://wafertools.github.io/wafermap/images/guide-plot-drilldown.png))
+
+- **A bin in the legend.** Right-click a bin on a map's legend, or on the gallery's lot legend, to open the menu on that bin's dies, on
+  that wafer or across the lot, without selecting them. With several bins filtered in, **Only bin N** and **All filtered bins** switch
+  between them. ([Bin legend filter](https://wafertools.github.io/wafermap/guide/display/#bin-legend-filter))
+- **A finding in the Summary panel.** Right-click a finding to show it and open the menu on every die it selects, across all the
+  wafers of a gallery, or on its wafers when it names no dies. ([Summary panel](https://wafertools.github.io/wafermap/user-guide/#6-summary-panel))
+- **A mark on an Insights chart.** A bar of the bin pareto, a pass-rate row (the dies failing that test), a bar of the value histogram,
+  a ring or quadrant of the yield diagrams, a level of a sweep curve, a drag across the wafer-to-wafer trend, and a plot's point, bar or
+  box each open the menu on exactly the dies they count, and a Wafers-table row opens its wafer. ([What a click does](https://wafertools.github.io/wafermap/user-guide/#what-a-click-does))
+- **Plots and sweeps from a selection.** The right-click Value histogram offers **Edit as new plot**, a saved sweep opens in its editor
+  over just the selected dies, and a new plot or sweep is kept only if you add it. ([Plots](https://wafertools.github.io/wafermap/user-guide/#plots), [Sweep cards](https://wafertools.github.io/wafermap/user-guide/#sweep-cards))
 
 **Compare the same place across a lot.** In a gallery, **Select on every wafer** applies a box or click made on any card at
 the same die positions on every card, so an edge ring, a scratch zone or a reticle corner is read lot-wide, and the
