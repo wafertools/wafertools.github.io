@@ -26,42 +26,40 @@ for the next lot, offered in the right-click menu over any selection of dies, an
 to share. **Delete all plots…** clears the list after asking you to confirm (it says how many, and points to **Export plots…** for a copy),
 and **Undo** brings it back for ten seconds. **Add examples** draws one plot of each type from the lot to start from, and a title you typed is checked against its plot, so one that still names a test you have since swapped out is flagged. In tsmap your plots are remembered between sessions. A plot that needs a test the open lot lacks is kept,
 dimmed, with the reason, and it checks a test's name as well as its number, so a plot saved against another test program
-is never drawn against the wrong measurement.
+is never drawn against the wrong measurement. ([Plots guide](https://wafertools.github.io/wafermap/user-guide/#plots), [screenshot](https://wafertools.github.io/wafermap/images/guide-plot-tab.png), [plot editor](https://wafertools.github.io/wafermap/images/guide-plot-editor.png), [Insights example](https://wafertools.github.io/wafermap/examples/insights.html), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#your-own-plots), [tsmap screenshot](https://wafertools.github.io/tsmap/images/plots-tab.png))
 
 **A Data tab in Insights.** The last Insights tab shows the wafers in scope as tables, one at a time: **Statistics** (the
 test-values and functional-tests tables), **Dies** (one row per die with a column per test, sortable, and smooth to scroll
 at hundreds of thousands of dies) and **Wafers** (one row per wafer: metadata, die counts, yield and test means). Each has
 **Export CSV**, which writes the table as shown, and **Copy**. Click a die's row to see that die ringed on its map. A very
 large export is written to disk in pieces, so the page stays responsive. Exported numbers carry full precision rather than
-the screen's four figures.
+the screen's four figures. ([Data tables guide](https://wafertools.github.io/wafermap/user-guide/#data-tables), [screenshot](https://wafertools.github.io/wafermap/images/guide-insights-data.png), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#tables-and-exports))
 
 **Right-click always offers the tables.** Right-clicking a map selection, a wafer or a chart mark opens a menu that now
 includes **Dies** and **Test statistics**, the Data tab's tables over just those dies, and it appears even on a map with
 nothing to chart. The Summary panel's "View die list" is now **Data tables** and opens the same tables over the wafer or
-lot, with Insights on or off.
+lot, with Insights on or off. ([Charting dies and wafers](https://wafertools.github.io/wafermap/user-guide/#44-charting-dies-and-wafers), [screenshot](https://wafertools.github.io/wafermap/images/guide-plot-drilldown.png))
 
 **Compare the same place across a lot.** In a gallery, **Select on every wafer** applies a box or click made on any card at
 the same die positions on every card, so an edge ring, a scratch zone or a reticle corner is read lot-wide, and the
 right-click menu then charts and tabulates those dies across all the wafers. Ctrl/Cmd+click a card's header to pick whole
 wafers. In the Insights scatter, hover a point to name its wafer and die, click it to open that wafer, or drag a rectangle to
-select dies across wafers.
+select dies across wafers. ([Select on every wafer](https://wafertools.github.io/wafermap/user-guide/#gallery))
 
 **Insights is on by default,** with a **Maps | Insights** switch that stays in the same place in both views, and a slim
 **Summary** tab on the edge of the map to open the Summary panel when it is closed. The metadata strip fits as many of a
-field's values as the width allows.
+field's values as the width allows. ([Upgrading](https://wafertools.github.io/wafermap/upgrading/#insights-is-on-by-default))
 
 **In tsmap, the column mapping and file filter read rows from throughout a file** (the first five, then up to twenty spread through
 the rest), so a column that changes partway through shows as varying; the filter says which values come from a sample.
 In tsmap the desktop window also reopens where you left it, and a small lot imports every test without stopping at the test
-selector (**Setup ▾ → Tests…** filters afterwards).
+selector (**Setup ▾ → Tests…** filters afterwards). ([column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet), [file filter screenshot](https://wafertools.github.io/tsmap/images/file-filter.png))
 
 **For developers building on wafermap:** `insights.plots` and `onPlotsChange` keep the Plot tab's list (with `readPlotsFile` and `writePlotsFile` for the file, and `onPickPlotsFile` for a native import dialog), `insights.enabled` defaults to `true` (pass `{ enabled: false }` to opt out),
 `onSaveText` can receive a `Blob` for a very large table, and a map's right-click menu is always the drilldown menu. The
 steps are in [Upgrading](https://wafertools.github.io/wafermap/upgrading/).
 
-**Also in this release:** if you state pass bins such as 3 and 5, every chart, table and report, including those opened from a right-click and the gallery's stacked views, judges yield by them as the map does, and ring counts follow the same rule. Standard deviation is the sample standard deviation (n−1) wherever it is shown, matching the capability indices.
-
-*Docs and demos: [Plots](https://wafertools.github.io/wafermap/user-guide/#plots) · [screenshot](https://wafertools.github.io/wafermap/images/guide-plot-tab.png) · [plot editor](https://wafertools.github.io/wafermap/images/guide-plot-editor.png) · [Data tables](https://wafertools.github.io/wafermap/user-guide/#data-tables) · [Data tab screenshot](https://wafertools.github.io/wafermap/images/guide-insights-data.png) · [right-click menu](https://wafertools.github.io/wafermap/images/guide-plot-drilldown.png) · [Select on every wafer](https://wafertools.github.io/wafermap/user-guide/#gallery) · [Insights example](https://wafertools.github.io/wafermap/examples/insights.html) · [your own plots in tsmap](https://wafertools.github.io/tsmap/user-guide/#your-own-plots) · [tsmap screenshot](https://wafertools.github.io/tsmap/images/plots-tab.png) · [tsmap column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet) · [Upgrading: pass bins and ring count](https://wafertools.github.io/wafermap/upgrading/#pass-bins-and-ring-count-have-no-defaults-after-the-build)*
+**Also in this release:** if you state pass bins such as 3 and 5, every chart, table and report, including those opened from a right-click and the gallery's stacked views, judges yield by them as the map does, and ring counts follow the same rule. Standard deviation is the sample standard deviation (n−1) wherever it is shown, matching the capability indices. ([Upgrading: pass bins and ring count](https://wafertools.github.io/wafermap/upgrading/#pass-bins-and-ring-count-have-no-defaults-after-the-build))
 
 *See: [tsmap v0.1.44](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0144--2026-10-06), [wafermap v0.34.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0340--2026-10-06)*
 
@@ -75,7 +73,7 @@ regular pitch, the Overlays menu offers **Compact layout**: the empty rows and c
 is outlined, so your product fills the map. Nothing is left out. The legend, yield and findings are the same as on the
 wafer view, and hover text and axis labels still give the original die coordinates. In a gallery every card shares one
 layout, so wafers compare cell for cell, and the cards are only as tall as their maps need. Random missing dies do not
-repeat, so a wafer that merely has holes is not offered it.
+repeat, so a wafer that merely has holes is not offered it. ([Compact layout](https://wafertools.github.io/wafermap/guide/layouts/#compact-layout-for-multi-project-wafers), [example](https://wafertools.github.io/wafermap/examples/multi-project-wafer.html), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#multi-project-wafers))
 
 **Layout diagnostics, for when a layout is not recognised.** A **Layout diagnostics** row in the same menu shows what the
 detector saw as counts and scores only — no die positions, bins, test values or wafer names — with **Copy** and **Save as
@@ -95,18 +93,18 @@ fail bins behind a region's shortfall named. Click a name to see it on the map. 
 section and have a new layout: severity is three dots and a word, so it reads in a black-and-white print, bars sit behind
 yields and bins, and a table row is tinted only when it is one or more points below its reference. A click on a finding in
 a report opened from the panel shows it on the map. The panel and the reports now count bins, order findings and read
-yields the same way, and the weakest severity is called "Minor".
+yields the same way, and the weakest severity is called "Minor". ([Summary panel](https://wafertools.github.io/wafermap/user-guide/#6-summary-panel), [example](https://wafertools.github.io/wafermap/examples/summary-panel.html))
 
 **Lot findings come from the lot.** A spatial pattern that recurs on the same dies across wafers is found by stacking the
 lot's wafers and reported once, on every wafer it shows on. Adjacent regions that carry one signal are one finding
 ("Sectors E–N", "Rings 1–2"). Outlier wafers follow one rule, shared by the findings and the Wafer Yield list. For lots of
-five or more wafers, a yield or a test mean that **drifts** across the wafers is listed as a **Watch** line.
+five or more wafers, a yield or a test mean that **drifts** across the wafers is listed as a **Watch** line. ([lot findings example](https://wafertools.github.io/wafermap/examples/lot-findings.html))
 
 **In tsmap, the column mapping dialog opens ready to confirm.** Columns that are recalculated on load (`Ring`, `Quadrant`,
 `Edge excluded`, a derived test's column) start as "— ignore —", numeric run conditions such as test temperature,
 operator, program, recipe and slot come in as Display info rather than tests, when two columns look like the same role the
 stronger match keeps it, the dialog says when a saved mapping is in use, and more X/Y names are recognised (`chip_x`,
-`position_x`, `X Coordinate`, `Y Row` and their equivalents).
+`position_x`, `X Coordinate`, `Y Row` and their equivalents). ([column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet), [screenshot](https://wafertools.github.io/tsmap/images/column-mapping.png))
 
 **For developers building on wafermap:** `viewOptions: { compact: true }` applies the compact layout whether or not it
 would be offered, and `viewOptions: { showAxes }` is the axis labels choice. `sectorCount` is 4, 8 or 16 (the compass
@@ -114,8 +112,6 @@ names cover 16 bearings; other values are corrected to the default with an `'ana
 findings have ids `drift:yield` and `drift:test:<number>`. The report builders load when a report is opened, which
 takes about 10 KB gzipped out of what rendering a map downloads. A new **Multi-project wafers** example shows the compact
 layout.
-
-*Docs and demos: [Compact layout](https://wafertools.github.io/wafermap/guide/layouts/#compact-layout-for-multi-project-wafers) · [multi-project wafer example](https://wafertools.github.io/wafermap/examples/multi-project-wafer.html) · [Summary panel](https://wafertools.github.io/wafermap/user-guide/#6-summary-panel) · [Summary panel example](https://wafertools.github.io/wafermap/examples/summary-panel.html) · [lot findings example](https://wafertools.github.io/wafermap/examples/lot-findings.html) · [multi-project wafers in tsmap](https://wafertools.github.io/tsmap/user-guide/#multi-project-wafers) · [tsmap column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet)*
 
 *See: [tsmap v0.1.43](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0143--2026-10-02), [wafermap v0.33.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0330--2026-10-02)*
 
@@ -127,7 +123,7 @@ layout.
 finding clicked in the Summary panel — now fades the rest of the wafer and outlines the
 selection, so the selected dies are the only ones in full colour. A finding's pattern stays
 readable inside its outline, and a ring-shaped region is unmistakably the ring, not the centre.
-Clicking the only selected die again clears the selection.
+Clicking the only selected die again clears the selection. ([Box select](https://wafertools.github.io/wafermap/user-guide/#43-box-select))
 
 **Maps open ready to select.** Dragging on a map now draws a selection box straight away; hold
 Space and drag, or choose Pan in the toolbar, to pan instead.
@@ -135,7 +131,7 @@ Space and drag, or choose Pan in the toolbar, to pan instead.
 **Show several bins at once.** Ctrl/Cmd+click in the legend adds or removes bins (or metadata
 values), so related fails can be viewed together; a plain click still shows just one. Clicking a
 finding about a bin filters the legend to that bin, so the legend always names what the finding
-describes.
+describes. ([Bin legend filter](https://wafertools.github.io/wafermap/guide/display/#bin-legend-filter))
 
 **Lot findings count every wafer that shows a pattern.** A regional pattern — a bin, the yield,
 a limit failure or a test value that differs at the edge, in a quadrant, a sector and so on — is
@@ -143,13 +139,11 @@ now tested on all the wafers' data together, and reported as, for example, "high
 wafers, all wafers' data combined". Patterns confined to
 one region (a bin found only at the edge), yield losses of a few points, and edge rings made of
 scattered fails are now reported too, and edge-ring and edge-local wafers count as one edge
-pattern.
+pattern. ([lot-level findings](https://wafertools.github.io/wafermap/guide/galleries/#lot-level-statistical-findings), [example](https://wafertools.github.io/wafermap/examples/lot-findings.html))
 
 **For developers building on wafermap:** `highlightBin` and `highlightMetadataValue` accept a
 list as well as a single value, and a lot finding about a region carries each counted wafer's
 dies in `highlight.dieKeysByWafer`.
-
-*Docs and demos: [Box select](https://wafertools.github.io/wafermap/user-guide/#43-box-select) · [Bin legend filter](https://wafertools.github.io/wafermap/guide/display/#bin-legend-filter) · [lot-level findings](https://wafertools.github.io/wafermap/guide/galleries/#lot-level-statistical-findings) · [lot findings example](https://wafertools.github.io/wafermap/examples/lot-findings.html)*
 
 *See: [tsmap v0.1.42](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0142--2026-09-27), [wafermap v0.32.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0320--2026-09-27)*
 
@@ -161,7 +155,7 @@ dies in `highlight.dieKeysByWafer`.
 example 1.2 million dies at 50 tests each — where it previously stopped at around 200,000 dies
 regardless of test count. A file past that limit now fails with a message saying so and what to
 do, instead of a parser error or a crashed tab. Selecting fewer tests in the test selector raises
-how many dies fit, since a filtered parse only holds the tests kept.
+how many dies fit, since a filtered parse only holds the tests kept. ([parser performance](https://wafertools.github.io/tsmap/parser-api/#performance))
 
 **Every load and analysis is faster, and every lot takes much less memory.** A lot now moves from
 the parser to the map as columns — one array per test rather than one object per die — with no
@@ -171,7 +165,7 @@ gallery open falls from about 4.1 GB to about 1.2 GB. In the browser, the same f
 about 6 seconds and holds about 330 MB, where it used to crash the tab outright. Regional
 test-value analysis (the **Analyse** findings) is two to three times faster, and now runs
 automatically on lots estimated to take under a second, with an **Analyse** button and a time
-estimate offered above that.
+estimate offered above that. ([Performance](https://wafertools.github.io/wafermap/performance/))
 
 **For developers building on wafermap:** test values and verdicts are now read from per-test
 columns rather than held as an object on every die — `die.testValues`/`die.testPass` still work,
@@ -184,15 +178,13 @@ compact columnar buffer instead of one JavaScript object per die, with a small d
 (`decodeParsed`/`decodeColumns`, shipped in the package) to read it back. This is the whole basis
 of the memory and speed improvements above; see the package's own docs for the exact shape.
 
-*Docs and demos: [Performance](https://wafertools.github.io/wafermap/performance/) · [parser performance](https://wafertools.github.io/tsmap/parser-api/#performance)*
-
 *See: [tsmap v0.1.42](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0142--2026-09-27), [wafermap v0.32.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0320--2026-09-27)*
 
 ---
 
 ## 2026-09-25 — Spec limits on the charts, files in different units combine, and a slimmer API
 
-**For developers building on wafermap — 0.31.0 is a breaking release:**
+**For developers building on wafermap — 0.31.0 is a breaking release:** ([Upgrading: removed exports](https://wafertools.github.io/wafermap/upgrading/#removed-exports))
 
 - **The exports deprecated in 0.30 are removed** — the low-level drawing pipeline, the chart-data
   and region builders, and a set of internal helpers — along with `buildWaferMap`'s unused second
@@ -219,7 +211,7 @@ limits (Lo limit / Hi limit), each labelled and dashed differently so the two ar
 When a test has both, a **Limits** choice switches all four charts together between both (the
 default), either kind, or none. Gridlines are lighter so the limits stand out, and the scatter
 marks a limit that falls outside its plotted range at the edge, as the other charts already did.
-The wafer map itself still judges pass/fail by the test limits.
+The wafer map itself still judges pass/fail by the test limits. ([Spec limits](https://wafertools.github.io/wafermap/guide/data/#spec-limits-on-test-parameters))
 
 **Spec limits can come from your own files.** A test-definitions file sets spec limits with
 `lsl`/`usl` (or `lo_spec`/`hi_spec`) columns, beside test limits in `lo_limit`/`hi_limit`, and a
@@ -242,8 +234,6 @@ number, is treated as missing and reported, rather than plotted as if it were or
 **New warnings are visible without opening the log.** tsmap's **Log** button shows how many
 warnings and errors have arrived since you last looked, such as "▲ 3 new warnings".
 
-*Docs and demos: [Spec limits](https://wafertools.github.io/wafermap/guide/data/#spec-limits-on-test-parameters) · [Upgrading to 0.31.0](https://wafertools.github.io/wafermap/upgrading/#removed-exports)*
-
 *See: [tsmap v0.1.41](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0141--2026-09-25), [wafermap v0.31.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0310--2026-09-25)*
 
 ---
@@ -255,7 +245,7 @@ limits it was judged against on the tester (Lo limit / Hi limit) and the process
 specification limits (LSL/USL) — the two are frequently different, and conflating them has
 always been a source of confusion. Process capability (Cpk and friends) now measures against a
 test's spec limits when it has them, and against its test limits otherwise, and says which one it
-used. Every chart, table and report labels the two apart.
+used. Every chart, table and report labels the two apart. ([Spec limits](https://wafertools.github.io/wafermap/guide/data/#spec-limits-on-test-parameters))
 
 **A result exactly on a limit is judged the way the file says, not assumed.** STDF and ATDF each
 record whether a value equal to a test's limit counts as a pass or a fail; that rule is now read
@@ -266,7 +256,7 @@ Summary panel, every chart.
 retests by part ID rather than by X/Y, and previously such a lot had no reliable way to say which
 record superseded which. Retests are now matched by part ID within a wafer when the file has no
 position for them, so retest handling (first/best/worst/last) resolves correctly instead of
-treating every attempt as a separate die.
+treating every attempt as a separate die. ([Handling retests](https://wafertools.github.io/wafermap/guide/data/#handling-retests), [example](https://wafertools.github.io/wafermap/examples/retests.html))
 
 **Test data is read exactly to the STDF/ATDF specification.** Bins, coordinates, test results and
 part IDs are all read to the value ranges and validity rules the formats define — including which
@@ -278,7 +268,7 @@ it were ordinary.
 selector has a **Remove derived tests** action, and **Setup ▾ → Sweeps…** has **Clear** — both
 previously had to be redefined from scratch to remove. After loading a file, tsmap now also warns
 when none of your derived tests could be computed, or when a sweep names none of the lot's tests,
-with a button to remove just the sweeps that don't apply.
+with a button to remove just the sweeps that don't apply. ([derived tests in tsmap](https://wafertools.github.io/tsmap/user-guide/#derived-tests))
 
 **For developers building on wafermap:**
 
@@ -290,8 +280,6 @@ with a button to remove just the sweeps that don't apply.
   always wins, whatever `retestPolicy` says.
 - **`DieResult.partId`/`Die.partId`** now accept text as well as numbers, as STDF and ATDF define
   them.
-
-*Docs and demos: [Spec limits](https://wafertools.github.io/wafermap/guide/data/#spec-limits-on-test-parameters) · [Handling retests](https://wafertools.github.io/wafermap/guide/data/#handling-retests) · [retests example](https://wafertools.github.io/wafermap/examples/retests.html) · [derived tests in tsmap](https://wafertools.github.io/tsmap/user-guide/#derived-tests)*
 
 *See: [tsmap v0.1.40](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0140--2026-09-25), [wafermap v0.30.4](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0304--2026-09-25)*
 
@@ -305,7 +293,7 @@ does.** A switching window (`t[1202] - t[1212]`), a leakage shift, a ratio, a lo
 limits, and see in every chart, table and report. Anything computed this way is marked **†**
 wherever it appears, so it is never mistaken for something the tester measured, and a die missing
 one of the inputs shows as no data rather than a misleading zero. In tsmap, add an `expression`
-column to your test definitions file.
+column to your test definitions file. ([Derived tests example](https://wafertools.github.io/wafermap/examples/derived-tests.html), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#derived-tests))
 
 **Sweeps: read a run of tests as a curve.** Many test programs measure one thing at a series of
 conditions — voltages, temperatures, bake times, cycle counts, resistance thresholds — and record
@@ -314,13 +302,13 @@ each step as its own test. Declare them as a sweep and Insights draws them as a 
 cross**, and **how far apart they are** at the levels you choose. The swept value can be given
 directly or read straight from the test names (`LRS_STATS_12K` is 12 kΩ), steps that grow by
 multiples can go on a log axis, and the axis can carry a unit. In tsmap, load a sweeps file from
-**Setup ▾ → Sweeps…**, or pass `--sweeps` on the command line.
+**Setup ▾ → Sweeps…**, or pass `--sweeps` on the command line. ([Sweeps example](https://wafertools.github.io/wafermap/examples/sweeps.html), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#sweeps))
 
 **Right-click to chart just the dies you care about.** Select a cluster or a scratch on a map and
 right-click — or right-click a wafer in a gallery, or one wafer's bar in a chart — for a
 histogram, process capability or any sweep drawn from only that population. The chart says
 exactly how many dies it used and from which wafer, so it cannot be mistaken for the whole lot.
-The same menu is on the map's new **Chart** button, and on the Menu key.
+The same menu is on the map's new **Chart** button, and on the Menu key. ([Charting dies and wafers](https://wafertools.github.io/wafermap/user-guide/#44-charting-dies-and-wafers))
 
 **An expanded chart now uses its window.** Charts opened in their own window used to stay the
 size they were in the grid; each now grows in the way that suits it — plots fill the window, lists
@@ -340,8 +328,6 @@ on Linux too, where they used to start at your home folder every time.
 - **Drilldown needs no wiring** and has no option: a map takes over right-click only when there
   is something to chart, so a host's own context menu still works on bins-only maps.
 
-*Docs and demos: [Derived tests example](https://wafertools.github.io/wafermap/examples/derived-tests.html) · [Sweeps example](https://wafertools.github.io/wafermap/examples/sweeps.html) · [Charting dies and wafers](https://wafertools.github.io/wafermap/user-guide/#44-charting-dies-and-wafers) · [derived tests in tsmap](https://wafertools.github.io/tsmap/user-guide/#derived-tests) · [sweeps in tsmap](https://wafertools.github.io/tsmap/user-guide/#sweeps)*
-
 *See: [tsmap v0.1.39](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0139--2026-09-23), [wafermap v0.30.3](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0303--2026-09-23)*
 
 ---
@@ -360,7 +346,7 @@ largest lots, now fills in piece by piece instead of freezing.
 crashing. Above roughly 200,000 dies the browser build can run out of memory outright; it now
 checks for that specific risk — separately from its existing "this may be slow" warning, which
 didn't cover it — and tells you before you commit to the load. The desktop app was never
-affected.
+affected. ([tsmap on the web](https://wafertools.github.io/tsmap/web/))
 
 **tsmap's loading screen is now one clear, consistent indicator** for every stage of opening a
 file — scanning, parsing, analysing, rendering — instead of a small spinner that vanished on
@@ -375,7 +361,7 @@ now fixed everywhere it could occur.
 **Correlation charts on very large lots no longer hang.** Above 25,000 dies, the correlation
 panel now computes from an evenly-spread sample of the lot rather than all of it, and says so
 plainly when it has. The numbers you see are unaffected either way — the sample is large enough
-that the values wouldn't change.
+that the values wouldn't change. ([Performance](https://wafertools.github.io/wafermap/performance/))
 
 **Smaller fixes:**
 
@@ -391,8 +377,6 @@ that the values wouldn't change.
   loading indicator (above) is built on this.
 - **A sampled correlation matrix says so in its data**, via `CorrelationMatrix.sample`, not just
   in the panel — for hosts reading matrices directly.
-
-*Docs and demos: [Performance](https://wafertools.github.io/wafermap/performance/) · [tsmap on the web](https://wafertools.github.io/tsmap/web/)*
 
 *See: [tsmap v0.1.38](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0138--2026-09-21), [wafermap v0.30.2](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0302--2026-09-20)*
 
@@ -454,8 +438,6 @@ button is now **Collapse**, with a different icon, and it is hidden while the wi
 - **Text bins and test values raise a warning.** A CSV parser gives every field as text, and a bin
   of `"1"` is not pass bin `1`: yield read 0% with nothing to say why.
 
-*Docs and demos: [Charting dies and wafers](https://wafertools.github.io/wafermap/user-guide/#44-charting-dies-and-wafers)*
-
 *See: [tsmap v0.1.37](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0137--2026-09-17), [wafermap v0.30.1](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0301--2026-09-16)*
 
 ---
@@ -471,7 +453,7 @@ learn a program's colours and compare screenshots by eye. wafermap does that aga
 follows pass and fail: a passing bin never takes a fail colour, a failing bin 1 is never green,
 and colours from your bin definitions file still win. Hard bin 5 and soft bin 5 are different
 colours, so the two maps can't be mistaken for each other. Screenshots of bin maps will change
-colour.
+colour. ([how bin colours are assigned](https://wafertools.github.io/wafermap/guide/data/#how-bin-colours-are-assigned), [example](https://wafertools.github.io/wafermap/examples/bin-colours.html))
 
 **Pass bins from your file now count everywhere, not just in the yield figure.** tsmap reads each
 wafer's pass bins from the file. Until now they reached only the headline yield number, and
@@ -480,7 +462,7 @@ Summary panel and report, region yield, the Insights yield charts and the galler
 program where bins 1 and 2 both pass, bin 2 showed as a failure beside a yield that counted it as
 a pass. Every surface now uses the pass bins in your file. In a lot that mixes test programs, each
 wafer is judged by its own pass bins, and a warning names any bin that passes on one wafer but
-fails on another.
+fails on another. ([Pass bins and yield](https://wafertools.github.io/wafermap/guide/data/#pass-bins-and-yield))
 
 **Soft-bin tables and yield are right too.** They had been judged against hard pass-bin numbers,
 so the gallery's soft-bin yield could read close to 0%. Soft bins are now judged by their own
@@ -500,7 +482,7 @@ such as RHEL. Firefox on the desktop can't install web apps, but the offline cac
 there. The whole app is cached on first visit, including the file parser, so an offline tsmap can
 still open files. The user guide's text works offline; its screenshots load the first time you
 view them online. Updates are never applied behind your back: tsmap asks first, because reloading
-discards anything you have loaded. None of this changes the desktop app.
+discards anything you have loaded. None of this changes the desktop app. ([installing tsmap as an app](https://wafertools.github.io/tsmap/web/#installing-tsmap-as-an-app))
 
 **Wafer configuration details are in plain language.** The info row used to show raw STDF codes
 such as "Wf Flat: D · Pos X: R". It now reads "Wafer Flat: Bottom · X Increases: Right", with
@@ -519,8 +501,6 @@ options on the analysis and render functions are removed: give pass bins to `bui
 everything downstream uses them. The
 [changelog](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md) lists every name.
 
-*Docs and demos: [How bin colours are assigned](https://wafertools.github.io/wafermap/guide/data/#how-bin-colours-are-assigned) · [bin colours example](https://wafertools.github.io/wafermap/examples/bin-colours.html) · [Pass bins and yield](https://wafertools.github.io/wafermap/guide/data/#pass-bins-and-yield) · [installing tsmap as an app](https://wafertools.github.io/tsmap/web/#installing-tsmap-as-an-app)*
-
 *See: [tsmap v0.1.36](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0136--2026-09-15), [wafermap v0.30.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0300--2026-09-15)*
 
 ---
@@ -535,7 +515,7 @@ readings could look equally intense — and because hue changes fast around cyan
 map drew ring-shaped boundaries that no process step put there. Engineers told us they could not
 judge how far apart two colours were. Viridis brightens steadily from one end to the other, so
 the colour you see corresponds to the value you have, and a dense grid of dies shows small
-differences honestly.
+differences honestly. ([Colour schemes example](https://wafertools.github.io/wafermap/examples/color-schemes.html))
 
 On a stacked map it also puts the emphasis the right way round. The healthy bulk of the wafer —
 where nothing failed — now sits back as dark ground, and the edge ring, scratch or cluster you
@@ -559,8 +539,6 @@ tsmap remembers the setting across restarts, alongside your bin and value colour
 **Also new: the Mako colour scale**, a blue-to-pale-green alternative with a little more
 separation at the top end than Viridis.
 
-*Docs and demos: [Colour schemes example](https://wafertools.github.io/wafermap/examples/color-schemes.html)*
-
 *See: [tsmap v0.1.35](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0135--2026-09-12), [wafermap v0.29.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0290--2026-09-12)*
 
 ---
@@ -576,7 +554,7 @@ including a colour-blind-safe set. When a lot has more bins than a palette can s
 says which bins share a colour rather than letting you assume they differ. **Bin maps therefore
 look different from before**; the change is deliberate. Bin and value colours are now separate
 choices, and tsmap remembers both across sessions; a bin definitions file can also set a bin's
-colour.
+colour. ([how bin colours are assigned](https://wafertools.github.io/wafermap/guide/data/#how-bin-colours-are-assigned), [example](https://wafertools.github.io/wafermap/examples/bin-colours.html))
 
 **Two parser fixes change numbers you may have relied on.** STDF wafer geometry (the WCR record:
 wafer size, die size, orientation) was read two bytes out of place, so any file that carried it
@@ -596,7 +574,7 @@ their wafer count; and when a scan mixes kinds of file, one click chooses which 
 document root, browse to it, and that is the whole procedure — no installer, no server-side
 component, and **no internet access needed at any point**, installation included. Files are still
 parsed in the browser, so nothing reaches your server either; it only ever serves the
-application.
+application. ([hosting tsmap yourself](https://wafertools.github.io/tsmap/web/))
 
 This is the answer for a site that cannot reach the public internet, or whose policy says lot
 data must not touch an external origin. It is also the only *dependable* offline option in a
@@ -616,7 +594,7 @@ there is no path to re-read — a browser picker hands a page contents, never a 
 entry is the copy taken when you last used it. That is fine for a selection or a set of renames
 and needs care with **spec limits**, so the menu says so, each row dates its copy, and applying
 one logs a warning naming the file when it sets limits. Re-pick through *Choose a file…* if the
-file may have moved on.
+file may have moved on. ([definitions files](https://wafertools.github.io/tsmap/user-guide/#definitions-files))
 
 **The file and setup menus are tidier.** Recent files moved into **Open files ▾** beside
 *Choose files…* and *Scan a folder…* — recents are a way of answering *which file*, which is the
@@ -654,8 +632,6 @@ did in a gallery. Its documentation
 site also gained a light/dark theme, a table of contents that follows your scroll on the long
 API reference, and hover definitions for domain terms like STDF, PTR and Cpk.
 
-*Docs and demos: [How bin colours are assigned](https://wafertools.github.io/wafermap/guide/data/#how-bin-colours-are-assigned) · [bin colours example](https://wafertools.github.io/wafermap/examples/bin-colours.html) · [hosting tsmap yourself](https://wafertools.github.io/tsmap/web/) · [definitions files](https://wafertools.github.io/tsmap/user-guide/#definitions-files)*
-
 *See: [tsmap v0.1.34](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0134--2026-09-11),
 [wafermap v0.28.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0280--2026-09-11)
 — a breaking release for applications built on wafermap: see its changelog for the colour API
@@ -687,13 +663,13 @@ panel got no hint that a whole category of finding had been skipped, and nothing
 them into the menu to discover it. tsmap now estimates the cost: under about a second it simply
 runs the analysis and notes it in the log; over that, the Findings panel itself carries a row
 saying what is missing, how much data it would cover and roughly how long it would take, with an
-**Analyse** button. The offer and its price arrive together, where you are already looking.
+**Analyse** button. The offer and its price arrive together, where you are already looking. ([Value findings](https://wafertools.github.io/tsmap/user-guide/#value-findings))
 
 **Point tsmap at a folder instead of picking files.** **Open files** and **Add files** each gained
 a ▾ offering *Choose files…* or *Scan a folder…*, and dropping a folder onto the window now scans
 it (previously that failed outright). A folder picker asks *where to look*, which the file-triage
 table cannot answer — so the two steps stop asking you the same question twice. Subfolders are
-opt-in and only offered when there are any.
+opt-in and only offered when there are any. ([Scanning a folder](https://wafertools.github.io/tsmap/user-guide/#scanning-a-folder))
 
 **wafermap** adds the chart a split experiment is actually run to produce — a **per-test pass-rate
 chart broken out by group** — plus a **wafer-to-wafer trend chart**, population tiles on the
@@ -710,8 +686,6 @@ and its licence nowhere), **eight more colour themes** taking the picker from 8 
 last entry, both projects also fixed the in-app user guide rendering as plain light — or as pale,
 near-illegible text on white — under every dark theme.
 
-*Docs and demos: [Scanning a folder](https://wafertools.github.io/tsmap/user-guide/#scanning-a-folder) · [Value findings](https://wafertools.github.io/tsmap/user-guide/#value-findings)*
-
 *See: [tsmap v0.1.33](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0133--2026-09-09),
 [wafermap v0.27.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0270--2026-09-09)
 · earlier: [tsmap v0.1.32](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0132--2026-08-28),
@@ -723,14 +697,14 @@ near-illegible text on white — under every dark theme.
 bin numbers, plus which ones count as pass. STDF/ATDF already carry this in their own HBR/SBR
 records; CSV/JSON/Parquet, which have no such record at all, can now load definitions from a
 CSV via a new **Load bin definitions…** button in the column mapping step, and any format can
-save/load them afterwards from **Lot ▾ → Bin definitions…**.
+save/load them afterwards from **Lot ▾ → Bin definitions…**. ([Bin definitions](https://wafertools.github.io/tsmap/user-guide/#bin-definitions))
 
 A new **Lot ▾ → Diameter & edge exclusion…** dialog lets you override the wafer size tsmap
 infers from the data and add an edge-exclusion band — dies within it are dropped from yield
 and shown dimmed on the map — useful when the data is too sparse for a reliable automatic
 guess. Both are also settable at launch via `--wafer-diameter`/`--edge-exclusion`. A new
 **Help → Definitions file formats…** dialog saves a filled-in example of any of tsmap's three
-definitions-file types (tests, splits, bins) without needing to load data first.
+definitions-file types (tests, splits, bins) without needing to load data first. ([Diameter and edge exclusion](https://wafertools.github.io/tsmap/user-guide/#wafer-diameter-and-edge-exclusion), [definitions files](https://wafertools.github.io/tsmap/user-guide/#definitions-files))
 
 **wafermap**'s summary and lot reports now open inside the app instead of a separate browser
 tab — closing a longstanding issue where the report could open successfully but sit hidden in
@@ -750,8 +724,6 @@ Excel/Sheets/LibreOffice on open; it's now safely escaped.
 two test entries merged into one **Tests…** — so the paths here read `Setup ▾ → Bin definitions…`
 and `Setup ▾ → Diameter & edge exclusion…` on current versions.*
 
-*Docs and demos: [Bin definitions](https://wafertools.github.io/tsmap/user-guide/#bin-definitions) · [Wafer diameter and edge exclusion](https://wafertools.github.io/tsmap/user-guide/#wafer-diameter-and-edge-exclusion) · [Definitions files](https://wafertools.github.io/tsmap/user-guide/#definitions-files) · [screenshot](https://wafertools.github.io/tsmap/images/file-filter.png)*
-
 *See: [tsmap v0.1.31](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0131--2026-08-28),
 [wafermap v0.26.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0260--2026-08-28)*
 
@@ -761,7 +733,7 @@ If you're wiring tsmap into a data-selection tool of your own, there's now a **[
 demo](https://wafertools.github.io/tsmap/demos/open-from-link.html)** of the launch-from-a-link
 flow: pick a sample dataset and get real, working links for both the browser build
 (`?dataUrl=`) and the desktop app (`tsmap://open?url=...`), plus the equivalent command line.
-Previously this was described in the docs but there was nothing to click.
+Previously this was described in the docs but there was nothing to click. ([opening data from a URL](https://wafertools.github.io/tsmap/user-guide/#opening-data-from-a-url))
 
 **tsmap**'s three dark themes (Dark, Nord, Solarized Dark) had borders and secondary text
 that measured as low as 1.04:1 against their own backgrounds — effectively invisible rather
@@ -776,8 +748,6 @@ decompressed it a second time); and a sparsely-positioned wafer whose dies all l
 row or column could render visibly stretched, non-square dies — cosmetic only, die counts,
 bins and yield were always correct.
 
-*Docs and demos: [Open-from-link demo](https://wafertools.github.io/tsmap/demos/open-from-link.html) · [Opening data from a URL](https://wafertools.github.io/tsmap/user-guide/#opening-data-from-a-url)*
-
 *See: [tsmap v0.1.28](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0128--2026-08-23),
 [wafermap v0.23.1](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0231--2026-08-18)*
 
@@ -788,7 +758,7 @@ lot/wafer metadata *before* loading any of them, and show the results in a sorta
 filterable table. Pick just the files you actually want from many, rather than loading
 everything and sorting it out afterward. The scan reads only header-level information (lot
 ID, part type, tester, wafer count, dates, etc), so it stays fast even across a large batch. A
-filter can be saved and reloaded, and the last one you used is remembered automatically.
+filter can be saved and reloaded, and the last one you used is remembered automatically. ([file filter screenshot](https://wafertools.github.io/tsmap/images/file-filter.png))
 
 Both **wafermap** and **tsmap** now handle wafer test data that has no reported die x/y positions
 at all — a wafer-number-only test log, or a lot where some dies report a position and others
@@ -796,12 +766,10 @@ don't. This used to be silently dropped; it's now kept, with the wafer shown as 
 breakdown or value histogram instead of a fabricated map (which would risk being misread as
 real spatial data), plus a full exportable die list. Yield, bin counts, and per-test
 statistics are unaffected either way — only spatial analysis (rings, quadrants, clustering)
-doesn't apply to a die with no position.
+doesn't apply to a die with no position. ([in wafermap](https://wafertools.github.io/wafermap/user-guide/#15-wafers-and-dies-with-no-position-data), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#dies-with-no-reported-position))
 
 Also: a pass over keyboard and screen-reader accessibility across wafermap's summary panel,
 chart legends, and die-list tables.
-
-*Docs and demos: [File filter screenshot](https://wafertools.github.io/tsmap/images/file-filter.png) · [Dies with no reported position](https://wafertools.github.io/tsmap/user-guide/#dies-with-no-reported-position)*
 
 *See: [tsmap v0.1.27](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0127--2026-08-16),
 [wafermap v0.23.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0230--2026-08-16)*
@@ -810,7 +778,7 @@ chart legends, and die-list tables.
 
 **tsmap** now opens `.parquet` files alongside STDF/ATDF/CSV/JSON, through the same column
 mapping used for CSV/JSON — useful if your data pipeline already lands in a columnar
-format rather than raw test-log files.
+format rather than raw test-log files. ([column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet))
 
 If your data lives behind an API or on a server rather than on your own filesystem, tsmap
 can now fetch and load it directly: `tsmap --url <url> --url-format <format>` on desktop, or
@@ -819,9 +787,7 @@ first. A caller application (your own data-selection tool, a script) can hand ts
 have it open immediately. Header-based authentication is supported on desktop for APIs that
 need it. A `tsmap://open?url=...` link lets a web page launch the desktop app directly with
 data to load, and on Windows/macOS/Linux tsmap can now register itself as the default handler
-for `.stdf`/`.atdf`/`.parquet` files, so double-clicking one in a file manager just opens it.
-
-*Docs and demos: [Parquet and the column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet) · [Opening data from a URL](https://wafertools.github.io/tsmap/user-guide/#opening-data-from-a-url) · [File associations](https://wafertools.github.io/tsmap/user-guide/#file-associations-desktop)*
+for `.stdf`/`.atdf`/`.parquet` files, so double-clicking one in a file manager just opens it. ([opening data from a URL](https://wafertools.github.io/tsmap/user-guide/#opening-data-from-a-url), [file associations](https://wafertools.github.io/tsmap/user-guide/#file-associations-desktop))
 
 *See: [tsmap v0.1.26](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#0126--2026-08-15)*
 
