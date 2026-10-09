@@ -14,6 +14,46 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-10-09 — Tester clamps kept out of the statistics, a Summary that acts on every row, and sharper pattern detection
+
+**Values that are not measurements can be left out.** A tester that runs out of range records its rail, not a reading, and one such value
+stretches the colour scale and drags the mean, σ and Cpk. A test can now carry **validity limits**, the range a real measurement lies in,
+and a value outside them counts as missing in the map, the statistics and every chart, and is counted wherever a population is shown (a
+grey die's tooltip names the value and the limit set). Bins and the tester's recorded verdict are unchanged. In wafermap the `valueFilter`
+option chooses which limit set a value must lie inside (validity, the default; specification; test; or none). In tsmap, a long-format
+file or a test-definitions file carries the limits (`lvl`/`uvl`), and **Setup ▾ → Exclude values outside limits…** chooses the set; the
+new `VALID-LOT-09.csv` sample has a few clamped readings to try it on.
+([wafermap example](https://wafertools.github.io/wafermap/examples/validity-limits.html), [tsmap guide](https://wafertools.github.io/tsmap/user-guide/#excluding-values-outside-limits))
+
+**Every row in "What stands out" shows its dies.** Each item, the further items below it and each Watch line is a row that selects its dies
+on the map when clicked, marked by a wafer icon; the leading item's fail bins, pattern and tests are chips that each show that part alone.
+A test is costed only by the dies it fails that also fail yield, so a test that is out of limits on dies binned as passing is said so
+without taking a place in the ranking. The Summary panel now opens from a labelled **Summary** button above the map and closes from its own
+header. ([Summary panel](https://wafertools.github.io/wafermap/user-guide/#6-summary-panel), [example](https://wafertools.github.io/wafermap/examples/summary-panel.html))
+
+**Pattern detection that holds up on real wafers.** Scratches are recognised at any angle and donuts by their radial profile. A cluster is
+tested by its size against random placement, small p-values are exact, and a region is compared only against the regions that are not
+themselves deviant, so a second bad region is still found beside the first. In wafermap, `StatsSummary.stats.testFailures` lists the dies each test
+fails. ([Pattern detection](https://wafertools.github.io/wafermap/pattern-detection/))
+
+---
+
+## 2026-10-06 — A Reticle setting in tsmap, reticle cells and shots, and pass/fail tests as plot fields
+
+**Set the reticle, and see what repeats.** In tsmap, **Setup ▾ → Reticle…** (or `--reticle 4x3`) takes the stepper field's size in dies.
+Every wafer then draws the field grid and is checked for failures that repeat at the same place in every field. In wafermap, a die's
+**Reticle cell** (its place inside the mask) and **Reticle shot** (where on the wafer the mask was placed for it) join ring and quadrant
+as categories to colour, compare and split yield by, and the Overview gains a **Reticle cell yield** grid: a cell that is low across
+every wafer points at the mask, not the wafer. ([Plots](https://wafertools.github.io/wafermap/user-guide/#plots), [tsmap Reticle](https://wafertools.github.io/tsmap/user-guide/#reticle))
+
+**Pass/fail tests are plot fields.** A functional test, or a derived test that gives a verdict, is a Pass or Fail category under
+**Verdicts**, so "Vth for the dies that pass the scan chain and those that fail it" is a box with two boxes. A derived test can also read a
+die's own `dieX()`, `dieY()`, `hbin()`, `sbin()` and `site()`. ([Derived tests](https://wafertools.github.io/wafermap/user-guide/#derived-tests))
+
+**One name for each wafer attribute.** Group by, the plot fields, the Wafers table, the header strip and the reports name an attribute the
+same way, and a host can set the names with the new `attributes` option. In tsmap, reference fields such as the program revision and
+tester details no longer clutter Group by and the plot fields.
+
 ## 2026-10-06 — Build and keep your own plots, Insights shows the lot as tables, and a gallery can select the same dies on every wafer
 
 **Build your own plots, and keep them.** The new **Plot** tab in Insights is a chart builder. **+ New plot** opens a plot
