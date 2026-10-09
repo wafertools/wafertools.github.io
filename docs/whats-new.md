@@ -14,27 +14,27 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
-## 2026-10-09 — Tester clamps kept out of the statistics, a Summary that acts on every row, and sharper pattern detection
+## 2026-10-09 — Exclude clamp values, a Summary button, and fewer false patterns
 
-**Values that are not measurements can be left out.** A tester that runs out of range records its rail, not a reading, and one such value
-stretches the colour scale and drags the mean, σ and Cpk. A test can now carry **validity limits**, the range a real measurement lies in,
-and a value outside them counts as missing in the map, the statistics and every chart, and is counted wherever a population is shown (a
-grey die's tooltip names the value and the limit set). Bins and the tester's recorded verdict are unchanged. In wafermap the `valueFilter`
-option chooses which limit set a value must lie inside (validity, the default; specification; test; or none). In tsmap, a long-format
-file or a test-definitions file carries the limits (`lvl`/`uvl`), and **Setup ▾ → Exclude values outside limits…** chooses the set; the
-new `VALID-LOT-09.csv` sample has a few clamped readings to try it on.
-([wafermap example](https://wafertools.github.io/wafermap/examples/validity-limits.html), [tsmap guide](https://wafertools.github.io/tsmap/user-guide/#excluding-values-outside-limits))
+**Exclude clamp values.** A tester that runs out of range records its clamp value, not a reading, and one such value stretches the
+colour scale and drags the mean, σ and Cpk. A test can now carry **validity limits**, the range a real measurement lies in, and a value
+outside them counts as missing in the map, statistics and charts and is counted wherever a population is shown. Bins and the tester's
+verdict are unchanged. In tsmap, **Setup ▾ → Exclude values outside limits…** chooses which limit set a value must lie inside, and the
+new `VALID-LOT-09.csv` sample has clamp values to try it on. In wafermap it is the `valueFilter` option.
+([Example](https://wafertools.github.io/wafermap/examples/validity-limits.html), [tsmap guide](https://wafertools.github.io/tsmap/user-guide/#excluding-values-outside-limits))
 
-**Every row in "What stands out" shows its dies.** Each item, the further items below it and each Watch line is a row that selects its dies
-on the map when clicked, marked by a wafer icon; the leading item's fail bins, pattern and tests are chips that each show that part alone.
-A test is costed only by the dies it fails that also fail yield, so a test that is out of limits on dies binned as passing is said so
-without taking a place in the ranking. The Summary panel now opens from a labelled **Summary** button above the map and closes from its own
-header. ([Summary panel](https://wafertools.github.io/wafermap/user-guide/#6-summary-panel), [example](https://wafertools.github.io/wafermap/examples/summary-panel.html))
+**A Summary button, and rows that show their dies.** The Summary panel opens from a labelled **Summary** button above the map, in place
+of the toolbar icon, and closes from its own header. Every row in "What stands out" shows its dies on the map when clicked, and the
+Findings section's Kind and Region dropdowns and Detail modal are gone: its severity chips are the controls.
+([Summary panel](https://wafertools.github.io/wafermap/user-guide/#6-summary-panel))
 
-**Pattern detection that holds up on real wafers.** Scratches are recognised at any angle and donuts by their radial profile. A cluster is
-tested by its size against random placement, small p-values are exact, and a region is compared only against the regions that are not
-themselves deviant, so a second bad region is still found beside the first. In wafermap, `StatsSummary.stats.testFailures` lists the dies each test
-fails. ([Pattern detection](https://wafertools.github.io/wafermap/pattern-detection/))
+**Fewer false patterns.** Scratches are recognised at any angle and donuts by their radial profile. A cluster is judged by its size
+against random placement, so purely random failures rarely read as one (3–5% of wafers at 2–10% fail rates), and a region is compared
+only with the regions that are not themselves deviant. Quadrants now hold equal shares, which can move a quadrant yield by up to two
+points on a wafer of a few hundred dies.
+([Pattern detection](https://wafertools.github.io/wafermap/pattern-detection/))
+
+**Smaller changes.** Soft-bin-only data opens in soft-bin mode, and the reports link each item to its evidence.
 
 ---
 
