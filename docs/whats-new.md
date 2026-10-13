@@ -14,6 +14,30 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-10-13 — Test-value findings offered where they are missing, findings that say what they measured, and bzip2 and European CSV files
+
+**Test-value findings, offered where they are missing.** Findings about a test reading high or low in one region take the longest to
+compute, so wafermap now decides when to run them: automatically when the data is small enough to take about a second, and otherwise
+the Findings panel says they are not included, with the number of tests and dies, roughly how long they would take, and an **Analyse**
+button. For a lot, one click analyses every wafer. Findings about tests failing their limits are always included. In tsmap the
+**Show test-value findings** menu item is gone: the offer is in the panel you are already reading. In wafermap the analysis now runs by
+default within that budget (`enableTestValueAnalysis: 'auto'`), and `onStatsSummaryChange` reports a re-run.
+([Findings panel](https://wafertools.github.io/wafermap/user-guide/#5-findings-panel), [tsmap guide](https://wafertools.github.io/tsmap/user-guide/#test-value-findings))
+
+**Findings that say what they measured.** A test finding names its statistic: "CONT_V mean" or "CONT_V limit fail rate", with every rate
+in percentage points, so a rate difference is never read as a shift in the test's values. The report's links stay in the report, with a
+**Back** button to return to where you were, and its bar figures read on any bin colour.
+
+**Your map preferences are remembered.** tsmap now keeps every map preference between sessions (overlays, legend position, number
+format, the Insights chart axis settings) as well as the colour schemes. A rotation, the compact layout and log scale are not kept:
+they describe the data on screen, and the next lot opens without them.
+
+**bzip2 and European CSV files.** `.bz2` files open like `.gz`, and a `;`-separated CSV with decimal commas (`0,25`) reads its values as
+numbers. Dense wafers drawn small no longer show light bands, test limits are shown in the digits the tester stored (`1.6`, not
+`1.600000023841858`), and large lots open and analyse faster.
+
+---
+
 ## 2026-10-09 — Exclude clamp values, a Summary button, and fewer false patterns
 
 **Exclude clamp values.** A tester that runs out of range records its clamp value, not a reading, and one such value stretches the
