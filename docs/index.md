@@ -9,7 +9,7 @@ want to look at wafer data, or put wafer maps inside something you are building?
 ### I want to look at wafer data → **tsmap**
 
 **[tsmap](https://wafertools.github.io/tsmap/)** is a finished, free, MIT-licensed
-application. Open STDF, ATDF, CSV, JSON or Parquet (and `.gz`/`.zip`) and get interactive
+application. Open STDF, ATDF, CSV, JSON or Parquet (and `.gz`/`.bz2`/`.zip`) and get interactive
 yield maps, parametric heat maps, findings, a full chart suite, lot galleries and
 exportable reports — no code, no account, no upload. It runs on Linux, macOS and Windows,
 and also [in your browser](https://wafertools.github.io/tsmap/app/), where files are still
@@ -31,7 +31,7 @@ dependencies, no server.
 
 Reach for it when you need wafer maps *inside* your own application, a data source tsmap
 doesn't read, or behaviour it doesn't offer — and note you can start with tsmap and
-integrate later. Two calls render a working map; tsmap itself uses eighteen of the library's
+integrate later. Two calls render a working map; tsmap itself uses nineteen of the library's
 exports.
 
 [Docs](https://wafertools.github.io/wafermap/) ·
