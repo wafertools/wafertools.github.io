@@ -14,6 +14,48 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 ---
 
+## 2026-10-20 — A far bigger chart builder, part average testing, group comparisons, and one filter for every view
+
+**Build your own charts, and many more of them.** The **My plots** tab now draws control charts (with the points that break a Western Electric rule
+marked), capability goal plots, heatmaps, probability plots, panels (one small chart per value of a field), nested categories, paretos and stacked or
+100% bars, several tests in one chart rescaled to share an axis, a measured value cut into ranges, fit lines with their R², histogram shares and
+what-if limits, and reference lines and bands on any axis. **Add examples** picks the tests and split that have the most to show in your lot, and
+right-clicking a wafer's mark charts that wafer on its own. ([The Insights tab](https://wafertools.github.io/wafermap/user-guide/#8-insights-tab),
+[Chart gallery](https://wafertools.github.io/wafermap/examples/insights.html))
+
+**Part average testing (PAT).** A **PAT** card on the Overview shows, per wafer, the dies within PAT limits set from that wafer's own spread of each
+test, the outliers that pass every limit but sit far from their neighbours, and the tests that drive them. The Dies table has a PAT column, plots can
+colour, divide or panel by PAT verdict, and **Map the verdicts** draws a map of each wafer by verdict.
+([Part average testing](https://wafertools.github.io/wafermap/user-guide/#1012-part-average-testing-pat))
+
+**Comparing groups, and what divides yield.** With Group by on, a **Comparison by** table compares yield and every test across the groups with each wafer as
+one value, so a few wafers are never made to look like thousands of dies, with a ranked q value, the size of the shift and a **Difference map** of where on
+the wafer the groups differ. **What divides yield** does the same for every wafer field at once, so you start with the field that separates the wafers most
+clearly. ([Comparing groups of wafers](https://wafertools.github.io/wafermap/user-guide/#102-comparing-groups-of-wafers))
+
+**What stands out, drawn as charts.** The items What stands out lists beside the map now appear on the Insights Overview as **Worth a look**, each drawn as
+the chart that shows it, ranked together: a region's loss, a failing bin, a test that shifts in a region, a trend across the wafers, a spread too wide for
+its limits, and a wafer field whose groups differ (a corner lot's split). **Show on map** takes you back to the map showing that item. Findings also find
+a cluster of a single failing bin where other bins' fails sit beside it.
+
+**The Insights charts are plots you can edit.** Yield, bin pareto, pass rate, box plot, histogram, trend and scatter are drawn by the same machinery as your
+own plots, so **Edit as plot** in a chart's ⋯ menu opens any of them as a plot of your own to change and keep. Every chart has an **About this chart** line,
+and the charts name the section of the user guide that explains them, which opens beside the app when you click it.
+
+**One filter for the maps, the gallery and Insights.** **Filter…**, the last button in the toolbar row, keeps only the wafers and dies that meet conditions
+you set: one split, bin 1, a ring, a range of a test, wafers below a yield. A wafer condition removes the wafer's card; a die condition draws the dies it
+drops faded on every map. The Summary panel, the findings, the report and the tables are analysed again over what is kept, and a line above the view always
+states the filter. Filters can be **saved by name** and moved as a small JSON file you can write by hand or generate; in tsmap they are remembered for the next
+lot. ([Filtering wafers and dies](https://wafertools.github.io/wafermap/user-guide/#filtering-wafers-and-dies),
+[demo](https://wafertools.github.io/wafermap/examples/filters.html))
+
+**Explained, and a reference.** The user guide has a new chapter, *The statistics, explained*, saying for each figure what question it answers and how it is
+worked out, and a **Chart reference** describes every chart, map and table: what it shows, why you would use it, how to read it and what to watch for.
+([The statistics, explained](https://wafertools.github.io/wafermap/user-guide/#10-the-statistics-explained),
+[Chart reference](https://wafertools.github.io/wafermap/charts/))
+
+---
+
 ## 2026-10-13 — Test-value findings offered where they are missing, findings that say what they measured, and bzip2 and European CSV files
 
 **Test-value findings, offered where they are missing.** Findings about a test reading high or low in one region take the longest to
