@@ -19,6 +19,7 @@ Most people arriving here want this one.
 
 [Open it in the browser](https://wafertools.github.io/tsmap/app/) ·
 [Download](https://github.com/wafertools/tsmap/releases) ·
+[Learn tsmap](https://wafertools.github.io/tsmap/learn/) ·
 [Docs](https://wafertools.github.io/tsmap/) ·
 [GitHub](https://github.com/wafertools/tsmap)
 
