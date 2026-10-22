@@ -13,6 +13,15 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 `@wafertools` npm scope (2026-08-01) — see each changelog directly for anything earlier.
 
 ---
+## 2026-10-22 — Learn tsmap, a choice of retest result, and part average testing on the map
+
+**Learn tsmap.** Eleven short lessons, from what a wafer map shows to opening data from a link, each ending with a lab in the web app. They are slide decks that work at your own pace, with screenshots and one idea per slide: wafertools.github.io/tsmap/learn.
+
+**Choose which result counts for a retested die.** Setup ▾ → Retests… keeps the last, first, best or worst result when a die position is probed more than once, and `--retests` sets it from the command line.
+
+**Part average testing on the map.** Plot mode now offers PAT verdict, colouring each die within the PAT limits, an outlier or failing, on a single map and on every wafer of a gallery.
+
+**More of the file's facts to group by.** The MIR code fields and the equipment an SDR names (handler, probe card, load board and so on) are read from STDF and ATDF files, and are Group by choices when they vary between wafers.
 
 ## 2026-10-20 — A far bigger chart builder, part average testing, group comparisons, and one filter for every view
 
