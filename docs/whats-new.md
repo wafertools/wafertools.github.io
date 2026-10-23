@@ -15,11 +15,11 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 ---
 ## 2026-10-22 — Learn tsmap, a choice of retest result, and part average testing on the map
 
-**Learn tsmap.** Thirteen short lessons, from what a wafer map shows to opening data from a link, each ending with a lab in the web app and a slide to check your results against. They are slide decks that work at your own pace, with screenshots and one idea per slide. Lessons 00 to 06 are the core path; the rest are there for when you need them. A glossary explains the terms, and the sample lots the labs use are on the sample files page: wafertools.github.io/tsmap/learn.
+**Learn tsmap.** Thirteen short lessons, from what a wafer map shows to opening data from a link, each ending with a lab in the web app and a slide to check your results against. They are slide decks that work at your own pace, with screenshots and one idea per slide. Lessons 00 to 06 are the core path; the rest are there for when you need them. A glossary explains the terms, and the sample lots the labs use are on the [sample files](https://wafertools.github.io/tsmap/web/#try-it-with-sample-data) page. ([Learn tsmap](https://wafertools.github.io/tsmap/learn/), [glossary](https://wafertools.github.io/tsmap/learn/glossary/))
 
-**Choose which result counts for a retested die.** Setup ▾ → Retests… keeps the last, first, best or worst result when a die position is probed more than once, and `--retests` sets it from the command line.
+**Choose which result counts for a retested die.** Setup ▾ → Retests… keeps the last, first, best or worst result when a die position is probed more than once, and `--retests` sets it from the command line. ([Retests](https://wafertools.github.io/tsmap/user-guide/#retests))
 
-**Part average testing on the map.** Plot mode now offers PAT verdict, colouring each die within the PAT limits, an outlier or failing, on a single map and on every wafer of a gallery.
+**Part average testing on the map.** Plot mode now offers PAT verdict, colouring each die within the PAT limits, an outlier or failing, on a single map and on every wafer of a gallery. ([Part average testing](https://wafertools.github.io/wafermap/user-guide/#1012-part-average-testing-pat))
 
 **More of the file's facts to group by.** The MIR code fields and the equipment an SDR names (handler, probe card, load board and so on) are read from STDF and ATDF files, and are Group by choices when they vary between wafers.
 
@@ -45,11 +45,11 @@ clearly. ([Comparing groups of wafers](https://wafertools.github.io/wafermap/use
 **What stands out, drawn as charts.** The items What stands out lists beside the map now appear on the Insights Overview as **Worth a look**, each drawn as
 the chart that shows it, ranked together: a region's loss, a failing bin, a test that shifts in a region, a trend across the wafers, a spread too wide for
 its limits, and a wafer field whose groups differ (a corner lot's split). **Show on map** takes you back to the map showing that item. Findings also find
-a cluster of a single failing bin where other bins' fails sit beside it.
+a cluster of a single failing bin where other bins' fails sit beside it. ([The Insights tab](https://wafertools.github.io/wafermap/user-guide/#8-insights-tab))
 
 **The Insights charts are plots you can edit.** Yield, bin pareto, pass rate, box plot, histogram, trend and scatter are drawn by the same machinery as your
 own plots, so **Edit as plot** in a chart's ⋯ menu opens any of them as a plot of your own to change and keep. Every chart has an **About this chart** line,
-and the charts name the section of the user guide that explains them, which opens beside the app when you click it.
+and the charts name the section of the user guide that explains them, which opens beside the app when you click it. ([Plots](https://wafertools.github.io/wafermap/user-guide/#plots))
 
 **One filter for the maps, the gallery and Insights.** **Filter…**, the last button in the toolbar row, keeps only the wafers and dies that meet conditions
 you set: one split, bin 1, a ring, a range of a test, wafers below a yield. A wafer condition removes the wafer's card; a die condition draws the dies it
@@ -81,11 +81,11 @@ in percentage points, so a rate difference is never read as a shift in the test'
 
 **Your map preferences are remembered.** tsmap now keeps every map preference between sessions (overlays, legend position, number
 format, the Insights chart axis settings) as well as the colour schemes. A rotation, the compact layout and log scale are not kept:
-they describe the data on screen, and the next lot opens without them.
+they describe the data on screen, and the next lot opens without them. ([What tsmap remembers](https://wafertools.github.io/tsmap/user-guide/#what-tsmap-remembers-and-how-to-forget-it))
 
 **bzip2 and European CSV files.** `.bz2` files open like `.gz`, and a `;`-separated CSV with decimal commas (`0,25`) reads its values as
 numbers. Dense wafers drawn small no longer show light bands, test limits are shown in the digits the tester stored (`1.6`, not
-`1.600000023841858`), and large lots open and analyse faster.
+`1.600000023841858`), and large lots open and analyse faster. ([Supported file formats](https://wafertools.github.io/tsmap/user-guide/#supported-file-formats))
 
 ---
 
@@ -358,14 +358,14 @@ The wafer map itself still judges pass/fail by the test limits. ([Spec limits](h
 long-format CSV, JSON or Parquet file can map columns to either kind. Process capability is
 measured against them, and **Save definitions** writes both. Every column name now means exactly
 one kind of limit, and a name that doesn't say which (`min`, `max`, `lower`, `upper`) is ignored
-with a warning rather than guessed.
+with a warning rather than guessed. ([Test definitions file](https://wafertools.github.io/tsmap/user-guide/#test-definitions-file))
 
 **A test recorded in mV by one file and V by another now stays in the lot.** tsmap used to
 treat the two as different measurements and leave the test out of every view that compares
 wafers. It now converts the later file's values and limits to the unit the first file uses, and
 says so in the log. Only a difference of SI prefix on the same unit is converted; anything else
 is still kept apart. A test-definitions file whose limits are written in another prefix is
-converted the same way.
+converted the same way. ([Opening several files](https://wafertools.github.io/tsmap/user-guide/#wafer-rename-overlay))
 
 **Every format now reads values to the STDF ranges.** CSV, JSON and Parquet join STDF and ATDF:
 a bin, position or site number the STDF format cannot hold, or a reading that is not a finite
@@ -614,7 +614,7 @@ by bin number, so one lot was listed two different ways on one screen.
 
 **Insights now works for files without die coordinates.** On a file with no X/Y positions, the
 "No die position data" panel stayed on top of Insights and hid most of the charts. The same
-happened on a file where only some dies have coordinates.
+happened on a file where only some dies have coordinates. ([Dies with no reported position](https://wafertools.github.io/tsmap/user-guide/#dies-with-no-reported-position))
 
 **The tsmap browser app now works offline, and Chrome, Chromium and Edge can install it** as an
 app with its own window and launcher entry. It is aimed at platforms tsmap ships no installer for,
@@ -674,7 +674,7 @@ definitions, so a scale you recognise from elsewhere reads the way you expect.
 **New Reverse gradient option.** Some parameters have their interesting end at the bottom, and
 monochrome print has its own convention that more ink means more. One tick box in the same Colour
 scheme menu flips whichever scale you have chosen, including one your own application registered.
-tsmap remembers the setting across restarts, alongside your bin and value colour choices.
+tsmap remembers the setting across restarts, alongside your bin and value colour choices. ([Custom colour schemes](https://wafertools.github.io/wafermap/guide/display/#custom-colour-schemes))
 
 **Also new: the Mako colour scale**, a blue-to-pale-green alternative with a little more
 separation at the top end than Viridis.
@@ -707,7 +707,7 @@ records labelled every wafer with the last lot. Each wafer now carries its own l
 **STDF and ATDF load together**, since they are the same records in binary and text. The file
 filter got easier to read too: columns lead with name, lot, wafer count and when each file was
 **Tested**; columns with nothing to show for the files in view are hidden; Parquet files report
-their wafer count; and when a scan mixes kinds of file, one click chooses which kind to show.
+their wafer count; and when a scan mixes kinds of file, one click chooses which kind to show. ([Scanning a folder](https://wafertools.github.io/tsmap/user-guide/#scanning-a-folder))
 
 **tsmap now ships as a static bundle you can host yourself.** Every release carries
 `tsmap-<version>-web.zip` alongside the desktop installers: unpack it into any web server's
@@ -751,7 +751,7 @@ actually stored on your machine — theme, recent files, saved column mappings, 
 diameter overrides — explains each one in a line, and forgets only what you tick. Until now a
 wrong saved column mapping was reapplied on every load of that layout with no way to undo it
 short of browser developer tools. Nothing here ever leaves your machine, and loaded wafer data is
-never stored.
+never stored. ([What tsmap remembers](https://wafertools.github.io/tsmap/user-guide/#what-tsmap-remembers-and-how-to-forget-it))
 
 Two fixes worth naming. **The last-used directory was never remembered on Windows** — it had
 been resolving its state file from a variable Windows does not set for a GUI application, so the
