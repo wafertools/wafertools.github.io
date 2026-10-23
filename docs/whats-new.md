@@ -15,7 +15,7 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 ---
 ## 2026-10-22 — Learn tsmap, a choice of retest result, and part average testing on the map
 
-**Learn tsmap.** Eleven short lessons, from what a wafer map shows to opening data from a link, each ending with a lab in the web app. They are slide decks that work at your own pace, with screenshots and one idea per slide: wafertools.github.io/tsmap/learn.
+**Learn tsmap.** Thirteen short lessons, from what a wafer map shows to opening data from a link, each ending with a lab in the web app and a slide to check your results against. They are slide decks that work at your own pace, with screenshots and one idea per slide. Lessons 00 to 06 are the core path; the rest are there for when you need them. A glossary explains the terms, and the sample lots the labs use are on the sample files page: wafertools.github.io/tsmap/learn.
 
 **Choose which result counts for a retested die.** Setup ▾ → Retests… keeps the last, first, best or worst result when a die position is probed more than once, and `--retests` sets it from the command line.
 
