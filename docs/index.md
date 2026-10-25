@@ -47,17 +47,21 @@ across both projects.
 
 ## Why these exist
 
-Both are written by **Paul Robins**, after nearly four decades in semiconductor test —
-most of it building test data analysis tools: wafer map and chart viewers, and the
-platforms they were built on.
+Both are written by **Paul Robins**, who has spent over 30 years building test data
+analysis software: wafer map and chart viewers, and the platforms they were built on.
 
-That work leaned on free software throughout — zlib, Tcl/Tk, SQLite, GCC — and it was a
-good deal. These projects are some of it going back the other way, prompted by finding
-out that engineers doing this job today still have no decent free option for wafer map
-analysis.
+A lot of that work leaned on free software, and it was a good deal. These projects are
+some of it going back the other way, prompted by finding out that engineers doing this
+job today still have no decent free option for wafer test map analysis.
 
 Both are MIT licensed: free to use, modify and redistribute, including in commercial and
 closed-source products.
+
+## Support
+
+If they save you time, you can support their development on
+[Ko-fi](https://ko-fi.com/wafertools): tips help cover development hardware and running
+costs. Bug reports and sample files help just as much.
 
 ## Questions
 
