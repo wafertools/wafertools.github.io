@@ -3,6 +3,9 @@
 Tools for reviewing semiconductor wafer test data: rendering wafer maps, computing yield
 and spatial statistics, and browsing STDF/ATDF/CSV/JSON/Parquet test results.
 
+![Three wafer maps coloured by leakage, between bin-share and box-plot charts grouped by process corner](images/wafertools-cover-light.png#only-light)
+![Three wafer maps coloured by leakage, between bin-share and box-plot charts grouped by process corner](images/wafertools-cover-dark.png#only-dark)
+
 There are two projects, and which one you want depends on a single question: **do you
 want to look at wafer data, or put wafer maps inside something you are building?**
 
