@@ -15,10 +15,9 @@ release on every machine, and bug reports and format requests go straight to the
 writes the code. There is no set price; contribute whatever you think it is worth to your team.
 
 The simplest route is [GitHub Sponsors](https://github.com/sponsors/wafertools): sponsor from
-your organisation's GitHub account and the sponsorship is added to the bill it already pays.
-Monthly contributions can also be set up on [Ko-fi](https://ko-fi.com/wafertools) with a company
-card. If your organisation needs an invoice before it can contribute, send a message through
-[Ko-fi](https://ko-fi.com/wafertools) and we will arrange one.
+your organisation's GitHub account and GitHub bills it alongside its other GitHub charges, with
+GitHub's own receipts. Monthly contributions can also be set up on
+[Ko-fi](https://ko-fi.com/wafertools) with a company card.
 
 ## Individuals
 
