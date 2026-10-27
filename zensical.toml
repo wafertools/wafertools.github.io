@@ -11,6 +11,7 @@ nav = [
   # rather than something you have to read the About page to find.
   { "wafermap"   = "https://wafertools.github.io/wafermap/" },
   { "tsmap"      = "https://wafertools.github.io/tsmap/"    },
+  { "Support"    = "support.md"   },
 ]
 
 # Footer links. The icon set ships with Zensical (templates/.icons/simple/).

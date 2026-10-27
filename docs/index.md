@@ -62,9 +62,10 @@ closed-source products.
 
 ## Support
 
-If they save you time, you can support their development on
-[Ko-fi](https://ko-fi.com/wafertools): tips help cover development hardware and running
-costs. Bug reports and sample files help just as much.
+Both projects are free, open-source and MIT-licensed, and will stay that way. If they save
+you time, you can leave a tip on [Ko-fi](https://ko-fi.com/wafertools). If your company
+relies on them, please consider a monthly sponsorship: [how to support wafertools](support.md).
+Bug reports and sample files help just as much.
 
 ## Questions
 
