@@ -13,6 +13,18 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 `@wafertools` npm scope (2026-08-01) — see each changelog directly for anything earlier.
 
 ---
+## 2026-10-28 — Bin tables, setup files and settings export, and richer Insights cards
+
+**Edit bins, limits and derived tests in tables.** In tsmap, Setup ▾ → Bin definitions… lists every bin with its die count, name, pass flag and colour, and Load… reads a definitions file in as edits you can check before applying. Edit limits… and Derived tests… in the test selector do the same for limits, units, type and computed tests, with each expression checked as you type. `--bins` applies a definitions file from the command line.
+
+**One setup file, and exportable settings.** Setup ▾ → Setup file… saves the wafer diameter, edge exclusion, reticle, retest policy and value filter as one CSV, and `--setup` applies it for a launch. Preferences → Export or import settings… moves saved layouts, plots, filters and preferences between machines.
+
+**More on the Insights cards.** Ring and quadrant yield by wafer heatmaps, a Group, then wafer view, a bin mix pareto, a pass-rate grid by group and a control chart on the wafer-to-wafer trend. The number keys 1 to 5 set the columns of a gallery or of the Insights charts.
+
+**For wafermap adopters.** `checkDerivedExpression` checks a derived test's expression without building a map, so a host's own editor agrees with the build. The Summary panel docks on the right or the left only (`placement` no longer takes `'top'` or `'bottom'`).
+
+*See: [tsmap v0.2.0](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#020--2026-10-28), [wafermap v0.38.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0380--2026-10-28)*
+
 ## 2026-10-22 — Learn tsmap, a choice of retest result, and part average testing on the map
 
 **Learn tsmap.** Thirteen short lessons, from what a wafer map shows to opening data from a link, each ending with a lab in the web app and a slide to check your results against. They are slide decks that work at your own pace, with screenshots and one idea per slide. Lessons 00 to 06 are the core path; the rest are there for when you need them. A glossary explains the terms, and the sample lots the labs use are on the [sample files](https://wafertools.github.io/tsmap/web/#try-it-with-sample-data) page. ([Learn tsmap](https://wafertools.github.io/tsmap/learn/), [glossary](https://wafertools.github.io/tsmap/learn/glossary/))

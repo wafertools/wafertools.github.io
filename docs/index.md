@@ -63,8 +63,8 @@ closed-source products.
 ## Support
 
 Both projects are free, open-source and MIT-licensed, and will stay that way. If they save
-you time, you can leave a tip on [Ko-fi](https://ko-fi.com/wafertools). If your company
-relies on them, please consider a monthly sponsorship: [how to support wafertools](support.md).
+you time, you can support them on [Ko-fi](https://ko-fi.com/wafertools). If your company
+relies on them, please consider sponsoring them monthly: [how to support wafertools](support.md).
 Bug reports and sample files help just as much.
 
 ## Questions
