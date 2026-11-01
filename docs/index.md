@@ -43,6 +43,11 @@ exports.
 [npm](https://www.npmjs.com/package/@wafertools/wafermap) ·
 [GitHub](https://github.com/wafertools/wafermap)
 
+### Common questions
+
+[How to draw a wafer map from an STDF file](draw-wafer-map-from-stdf.md) ·
+[How to draw a wafer map in JavaScript](wafer-maps-in-javascript.md)
+
 ### What changed recently
 
 [**What's New**](whats-new.md) is a curated, plain-language timeline of new capabilities
@@ -66,6 +71,9 @@ Both projects are free, open-source and MIT-licensed, and will stay that way. If
 you time, you can support them on [Ko-fi](https://ko-fi.com/wafertools). If your company
 relies on them, please consider sponsoring them monthly: [how to support wafertools](support.md).
 Bug reports and sample files help just as much.
+
+[Sponsor on GitHub](https://github.com/sponsors/wafertools){ .md-button .md-button--primary }
+[Support on Ko-fi](https://ko-fi.com/wafertools){ .md-button }
 
 ## Questions
 

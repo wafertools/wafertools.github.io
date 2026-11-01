@@ -13,6 +13,26 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 `@wafertools` npm scope (2026-08-01) — see each changelog directly for anything earlier.
 
 ---
+## 2026-11-01 — More Insights charts, signed colour scales and a My plots | Examples switch
+
+**More Insights charts.** In tsmap, Tests by wafer (or by group) at the top of Distributions shows the tests whose wafers differ most, as a grid of z-scores. Yield by site appears when a lot was tested on more than one site, and Re-probed dies, by ring and wafer, when a lot has re-probed dies. The box plot can be drawn by radius, the value histogram as a cumulative curve, and the test scatter, histogram and wafer-to-wafer trend have log scales.
+
+**Correlation.** On the correlation matrix, Fails together shows which tests fail on the same dies, and Within groups takes each group's mean off first, so a difference between groups is not read as a link between tests.
+
+**Comparing groups.** With Group by on, the comparison tables shade each group's mean among its peers, and the Data tab's Statistics view opens with one table of every test for every group, with Ppk and the share inside limits. A control chart can colour its points by a wafer field, so a pattern that belongs to a group shows as a colour.
+
+**One colour language.** Every signed scale is blue below and orange above: the correlation matrix, z-score heatmaps and the difference map, so one colour never means high on one chart and low on the next. Heatmaps have a line between cells, a frame and a tick for each row and column.
+
+**Overview and data.** The Overview leads with Worth a look, then what divides yield, then the standing cards, and the Wafers table puts the numbers first. A plot card's ⋯ menu can save the numbers behind it as CSV or copy them to paste into a spreadsheet.
+
+**My plots | Examples.** Examples shows one plot of each chart type the lot can show. Add to my plots keeps one; Add all keeps the rest, with an Undo. A filter can be written, pasted and copied as JSON, with suggestions for the keys, the lot's fields and tests, and the values a field takes; the plot editor has the same JSON view for plots.
+
+**For wafermap adopters.** The Insights tab carries all of the above, and a plots file written with `mark` and `encoding` is read as `chart` and `fields`. A chart or field name the library does not know is reported with the valid choices and the nearest match.
+
+**Support.** The support page offers GitHub Sponsors as well as Ko-fi.
+
+*See: [tsmap v0.2.1](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#021--2026-11-01), [wafermap v0.39.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0390--2026-10-31)*
+
 ## 2026-10-28 — Bin tables, setup files and settings export, and richer Insights cards
 
 **Edit bins, limits and derived tests in tables.** In tsmap, Setup ▾ → Bin definitions… lists every bin with its die count, name, pass flag and colour, and Load… reads a definitions file in as edits you can check before applying. Edit limits… and Derived tests… in the test selector do the same for limits, units, type and computed tests, with each expression checked as you type. `--bins` applies a definitions file from the command line.

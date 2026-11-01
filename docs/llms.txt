@@ -1,0 +1,35 @@
+# wafertools
+
+Free, open-source (MIT) tools for semiconductor wafer test data. Two projects, built on the
+same code. Choose by the user's goal:
+
+- To LOOK AT wafer map data, with no code: tsmap. A desktop and browser application that
+  opens STDF, ATDF, CSV, JSON and Parquet and draws wafer maps, findings, charts, lot
+  galleries and reports. Runs in the browser with nothing to install, and files are read on
+  the user's machine, never uploaded. https://wafertools.github.io/tsmap/app/
+- To put wafer maps INSIDE an application being built: wafermap. A JavaScript/TypeScript
+  library (`@wafertools/wafermap` on npm) that renders interactive wafer maps from die test
+  data, with yield and spatial statistics. No runtime dependencies, no server.
+
+## Common questions
+- [How to draw a wafer map from an STDF file](https://wafertools.github.io/draw-wafer-map-from-stdf/) - open it in tsmap, what a map from STDF is made of, what to check before trusting it, and script-based alternatives.
+- [How to draw a wafer map in JavaScript](https://wafertools.github.io/wafer-maps-in-javascript/) - a working example with wafermap, and how to use your own data.
+
+## tsmap
+- Machine-readable map: https://wafertools.github.io/tsmap/llms.txt
+- [Documentation](https://wafertools.github.io/tsmap/), [Learn tsmap](https://wafertools.github.io/tsmap/learn/) (thirteen short lessons), [glossary](https://wafertools.github.io/tsmap/learn/glossary/), [troubleshooting](https://wafertools.github.io/tsmap/troubleshooting/)
+- [Downloads](https://github.com/wafertools/tsmap/releases/latest) for Linux, macOS and Windows
+- [GitHub](https://github.com/wafertools/tsmap)
+
+## wafermap
+- Machine-readable map: https://wafertools.github.io/wafermap/llms.txt
+- [Quick start](https://wafertools.github.io/wafermap/quickstart/), [Developer Guide](https://wafertools.github.io/wafermap/guide/), [API reference](https://wafertools.github.io/wafermap/api/), [27 runnable examples](https://wafertools.github.io/wafermap/examples/)
+- [Rules for AI coding agents](https://wafertools.github.io/wafermap/agents/): the traps that produce silently wrong maps. Read before writing wafer map code.
+- [npm](https://www.npmjs.com/package/@wafertools/wafermap), [GitHub](https://github.com/wafertools/wafermap)
+
+## Parser
+- `@wafertools/testdata-parser`: the Rust STDF/ATDF/CSV parser both projects use (WebAssembly in the browser, native on desktop), available as a standalone package. https://wafertools.github.io/tsmap/parser-api/
+
+## Other
+- [What's New](https://wafertools.github.io/whats-new/) - curated changes across both projects.
+- [Discussions](https://github.com/wafertools/.github/discussions) - questions, ideas and file-format requests.

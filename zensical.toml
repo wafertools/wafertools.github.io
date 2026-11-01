@@ -7,6 +7,10 @@ repo_url    = "https://github.com/wafertools"
 nav = [
   { "What's New" = "whats-new.md" },
   { "About"      = "index.md"     },
+  { "How do I…"  = [
+    { "Draw a wafer map from STDF" = "draw-wafer-map-from-stdf.md"  },
+    { "Wafer maps in JavaScript"   = "wafer-maps-in-javascript.md"  },
+  ] },
   # External: this site is a hub, so the two project sites are top-level tabs
   # rather than something you have to read the About page to find.
   { "wafermap"   = "https://wafertools.github.io/wafermap/" },
@@ -15,6 +19,11 @@ nav = [
 ]
 
 # Footer links. The icon set ships with Zensical (templates/.icons/simple/).
+[[project.extra.social]]
+icon = "simple/githubsponsors"
+link = "https://github.com/sponsors/wafertools"
+name = "Sponsor wafertools on GitHub Sponsors"
+
 [[project.extra.social]]
 icon = "simple/kofi"
 link = "https://ko-fi.com/wafertools"
