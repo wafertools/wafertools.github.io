@@ -25,7 +25,7 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 
 **Overview and data.** The Overview leads with Worth a look, then what divides yield, then the standing cards, and the Wafers table puts the numbers first. A plot card's ⋯ menu can save the numbers behind it as CSV or copy them to paste into a spreadsheet.
 
-**My plots | Examples.** Examples shows one plot of each chart type the lot can show. Add to my plots keeps one; Add all keeps the rest, with an Undo. A filter can be written, pasted and copied as JSON, with suggestions for the keys, the lot's fields and tests, and the values a field takes; the plot editor has the same JSON view for plots.
+**My plots | Examples.** Examples shows one plot of each chart type the lot can show. Add to my plots keeps one; Add all keeps the rest, with an Undo. The Filter window and the plot editor each have a simple JSON editor: a filter or a plot can be written, pasted and copied as text, with suggestions for the keys, the lot's fields and tests, and the values a field takes.
 
 **For wafermap adopters.** The Insights tab carries all of the above, and a plots file written with `mark` and `encoding` is read as `chart` and `fields`. A chart or field name the library does not know is reported with the valid choices and the nearest match.
 
