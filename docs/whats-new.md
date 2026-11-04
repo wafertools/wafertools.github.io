@@ -472,7 +472,7 @@ conditions — voltages, temperatures, bake times, cycle counts, resistance thre
 each step as its own test. Declare them as a sweep and Insights draws them as a response curve
 (the median with a p10–p90 band), and measures a pair of curves against each other: **where they
 cross**, and **how far apart they are** at the levels you choose. The swept value can be given
-directly or read straight from the test names (`LRS_STATS_12K` is 12 kΩ), steps that grow by
+directly or read straight from the test names (`LEVEL_12K` is 12 kΩ), steps that grow by
 multiples can go on a log axis, and the axis can carry a unit. In tsmap, load a sweeps file from
 **Setup ▾ → Sweeps…**, or pass `--sweeps` on the command line. ([Sweeps example](https://wafertools.github.io/wafermap/examples/sweeps.html), [in tsmap](https://wafertools.github.io/tsmap/user-guide/#sweeps))
 
