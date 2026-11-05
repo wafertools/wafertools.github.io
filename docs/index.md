@@ -9,7 +9,7 @@ and spatial statistics, and browsing STDF/ATDF/CSV/JSON/Parquet test results.
 There are two projects, and which one you want depends on a single question: **do you
 want to look at wafer data, or put wafer maps inside something you are building?**
 
-### I want to look at wafer data → **tsmap**
+## I want to look at wafer data → **tsmap**
 
 **[tsmap](https://wafertools.github.io/tsmap/)** is a finished, free, MIT-licensed
 application. Open STDF, ATDF, CSV, JSON or Parquet (and `.gz`/`.bz2`/`.zip`) and get interactive
@@ -26,7 +26,7 @@ Most people arriving here want this one.
 [Docs](https://wafertools.github.io/tsmap/) ·
 [GitHub](https://github.com/wafertools/tsmap)
 
-### I'm building an application → **wafermap**
+## I'm building an application → **wafermap**
 
 **[wafermap](https://wafertools.github.io/wafermap/)** (`@wafertools/wafermap` on npm) is
 the rendering and analysis library tsmap itself is built on: interactive wafer maps, yield
@@ -35,7 +35,7 @@ dependencies, no server.
 
 Reach for it when you need wafer maps *inside* your own application, a data source tsmap
 doesn't read, or behaviour it doesn't offer — and note you can start with tsmap and
-integrate later. Two calls render a working map; tsmap itself uses 22 of the library's
+integrate later. Two calls render a working map; tsmap itself uses 26 of the library's
 exports.
 
 [Docs](https://wafertools.github.io/wafermap/) ·
@@ -43,12 +43,12 @@ exports.
 [npm](https://www.npmjs.com/package/@wafertools/wafermap) ·
 [GitHub](https://github.com/wafertools/wafermap)
 
-### Common questions
+## Common questions
 
 [How to draw a wafer map from an STDF file](draw-wafer-map-from-stdf.md) ·
 [How to draw a wafer map in JavaScript](wafer-maps-in-javascript.md)
 
-### What changed recently
+## What changed recently
 
 [**What's New**](whats-new.md) is a curated, plain-language timeline of new capabilities
 across both projects.

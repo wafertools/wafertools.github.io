@@ -64,7 +64,7 @@ npm install @wafertools/wafermap
 Each die is an object with `x`, `y` and `hbin`, plus optional soft bin, test values and
 wafer details. A few points save a lot of time:
 
-- **Pass an array of numbers, not strings.** A CSV parser returns every field as text.
+- **Pass numbers, not strings.** A CSV parser returns every field as text.
   Convert coordinates, bins and test values with `Number()` before calling
   `buildWaferMap`, or the dies will not count.
 - **Set `passBins` for your test program.** Which bins pass decides the yield figure, so do

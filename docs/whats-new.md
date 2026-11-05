@@ -227,7 +227,7 @@ the rest), so a column that changes partway through shows as varying; the filter
 In tsmap the desktop window also reopens where you left it, and a small lot imports every test without stopping at the test
 selector (**Setup ▾ → Tests…** filters afterwards). ([column mapping](https://wafertools.github.io/tsmap/user-guide/#column-mapping-csv-json-and-parquet), [file filter screenshot](https://wafertools.github.io/tsmap/images/file-filter.png))
 
-**For developers building on wafermap:** `insights.plots` and `onPlotsChange` keep the Plot tab's list (with `readPlotsFile` and `writePlotsFile` for the file, and `onPickPlotsFile` for a native import dialog), `insights.enabled` defaults to `true` (pass `{ enabled: false }` to opt out),
+**For developers building on wafermap:** `insights.plots` and `onPlotsChange` keep the My plots tab's list (with `readPlotsFile` and `writePlotsFile` for the file, and `onPickPlotsFile` for a native import dialog), `insights.enabled` defaults to `true` (pass `{ enabled: false }` to opt out),
 `onSaveText` can receive a `Blob` for a very large table, and a map's right-click menu is always the drilldown menu. The
 steps are in [Upgrading](https://wafertools.github.io/wafermap/upgrading/).
 
