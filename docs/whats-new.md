@@ -1,3 +1,7 @@
+---
+description: "What is new in tsmap and wafermap, release by release: new and improved features for people who use the app or build on the library."
+---
+
 # What's New
 
 A plain-language, timelined summary of new and meaningfully improved capabilities across

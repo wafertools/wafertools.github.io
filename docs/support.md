@@ -1,3 +1,7 @@
+---
+description: "wafermap and tsmap are free and open source under the MIT licence. How to support their development through GitHub Sponsors or Ko-fi."
+---
+
 # Support wafertools
 
 wafermap and tsmap are free and open source under the MIT licence, and will stay that way.

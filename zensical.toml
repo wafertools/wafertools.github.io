@@ -1,5 +1,6 @@
 [project]
 site_name   = "wafertools"
+site_description = "Free, open-source tools for semiconductor wafer test data: the tsmap wafer map viewer and the wafermap JavaScript library."
 site_url    = "https://wafertools.github.io/"
 site_author = "Paul Robins"
 repo_url    = "https://github.com/wafertools"
@@ -30,6 +31,7 @@ link = "https://ko-fi.com/wafertools"
 name = "Support wafertools on Ko-fi"
 
 [project.theme]
+custom_dir = "overrides"
 favicon = "images/wafertools-icon.png"
 logo    = "images/wafertools-icon.png"
 features = [

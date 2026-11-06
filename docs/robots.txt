@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wafertools.github.io/sitemap.xml
+Sitemap: https://wafertools.github.io/wafermap/sitemap.xml
+Sitemap: https://wafertools.github.io/tsmap/sitemap.xml
