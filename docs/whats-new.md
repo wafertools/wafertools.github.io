@@ -17,6 +17,22 @@ Covers everything since both projects moved to the `wafertools` GitHub org and
 `@wafertools` npm scope (2026-08-01) — see each changelog directly for anything earlier.
 
 ---
+## 2026-11-06 — What divides yield at a glance, groups in What stands out, and wafers that open on what you clicked
+
+**What divides yield at a glance.** Each wafer field is one row: the worst and best group as two bars on a 0 to 100% scale, a sentence giving the gap in points, and a confidence of Clear, Possible or Not clear in place of the p-values. Fields that group the wafers the same way (a tester and the handler docked to it) are one row, and a field hidden by another (a weak probe card on wafers that also differ by recipe) is read after allowing for it.
+
+**Groups in What stands out.** What stands out compares groups of wafers on yield and on the weakest ring as well as on tests, so a probe card or a recipe that costs yield is named with its size in points and the fail bin it is in. Groups that differ clearly but on too few wafers to confirm are listed under Possible, not confirmed.
+
+**A wafer opens on what you clicked.** From any chart or table, a wafer opens on the test it is about, on its bins for a yield, and otherwise in the mode the maps are in. A row of the Dies table opens its wafer with the die ringed, on the test whose column you clicked. Right-click opens the same menu a click does on every Insights chart.
+
+**Worth a look follows the filter.** Under a filter, Worth a look shows the items What stands out lists for what the filter keeps, and each Chart link in the Summary panel opens its card.
+
+**In tsmap.** The desktop app tells you when a newer release is out, with Not now and Skip this version; nothing is downloaded. The sample lot is a full lot of 25 wafers tested in five sessions, so every Group by field moves the data.
+
+**For wafermap adopters.** All of the above comes with the Insights tab and the Summary panel, with nothing to wire.
+
+*See: [tsmap v0.2.3](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#023--2026-11-06), [tsmap v0.2.2](https://github.com/wafertools/tsmap/blob/main/CHANGELOG.md#022--2026-11-06), [wafermap v0.40.1](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0401--2026-11-06), [wafermap v0.40.0](https://github.com/wafertools/wafermap/blob/main/CHANGELOG.md#0400--2026-11-06)*
+
 ## 2026-11-01 — More Insights charts, signed colour scales and a My plots | Examples switch
 
 **More Insights charts.** In tsmap, Tests by wafer (or by group) at the top of Distributions shows the tests whose wafers differ most, as a grid of z-scores. Yield by site appears when a lot was tested on more than one site, and Re-probed dies, by ring and wafer, when a lot has re-probed dies. The box plot can be drawn by radius, the value histogram as a cumulative curve, and the test scatter, histogram and wafer-to-wafer trend have log scales.
